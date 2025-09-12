@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F1EF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_arrow_left"
+                android:contentDescription="arrow"
+                app:tint="#8B7355"
+                android:scaleType="centerInside"
+                android:padding="12dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="today tasks"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#2D2D2D"
+                android:gravity="center" />
+
+            <ImageButton
+                android:id="@+id/btn_notification"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="notifications"
+                android:contentDescription="notifications"
+                app:tint="#8B7355"
+                android:scaleType="centerInside"
+                android:padding="12dp" />
+
+        </LinearLayout>
+
+        <!-- Date Selection Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="24dp">
+
+            <!-- May 23 -->
+            <LinearLayout
+                android:id="@+id/date_may_23"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/date_unselected_bg"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="may"
+                    android:textSize="12sp"
+                    android:textColor="#8B7355"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#8B7355"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="fri"
+                    android:textSize="10sp"
+                    android:textColor="#8B7355" />
+
+            </LinearLayout>
+
+            <!-- May 24 -->
+            <LinearLayout
+                android:id="@+id/date_may_24"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/date_unselected_bg"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="may"
+                    android:textSize="12sp"
+                    android:textColor="#8B7355"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#8B7355"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sat"
+                    android:textSize="10sp"
+                    android:textColor="#8B7355" />
+
+            </LinearLayout>
+
+            <!-- May 25 - Selected -->
+            <LinearLayout
+                android:id="@+id/date_may_25"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/date_selected_bg"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="may"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sun"
+                    android:textSize="10sp"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+            <!-- May 26 -->
+            <LinearLayout
+                android:id="@+id/date_may_26"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/date_unselected_bg"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="may"
+                    android:textSize="12sp"
+                    android:textColor="#8B7355"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="26"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#8B7355"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mon"
+                    android:textSize="10sp"
+                    android:textColor="#8B7355" />
+
+            </LinearLayout>
+
+            <!-- May 27 -->
+            <LinearLayout
+                android:id="@+id/date_may_27"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/date_unselected_bg"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="may"
+                    android:textSize="12sp"
+                    android:textColor="#8B7355"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="27"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#8B7355"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="tues"
+                    android:textSize="10sp"
+                    android:textColor="#8B7355" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Filter Tabs -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btn_all"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="all"
+                android:textSize="14sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/filter_selected_bg"
+                android:paddingHorizontal="20dp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btn_todo"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/filter_unselected_bg"
+                android:paddingHorizontal="20dp"
+                android:text="to do"
+                android:textColor="#FAF8F7"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_in_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/filter_unselected_bg"
+                android:paddingHorizontal="20dp"
+                android:text="in progress"
+                android:textColor="#FFFEFC"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- Task List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_tasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_task" />
+
+        <!-- Add Task Button -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="#D18B7A"
+            app:tint="#FFFFFF"
+            android:contentDescription="add task" />
+
+    </LinearLayout>
+
+</ScrollView>

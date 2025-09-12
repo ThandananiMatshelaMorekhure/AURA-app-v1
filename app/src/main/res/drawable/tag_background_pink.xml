@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Pressed state -->
+    <item android:state_pressed="true">
+        <layer-list>
+            <!-- Background gradient -->
+            <item>
+                <shape>
+                    <gradient
+                        android:startColor="#FF1493"
+                        android:centerColor="#9932CC"
+                        android:endColor="#00CED1"
+                        android:angle="135" />
+                </shape>
+            </item>
+            <!-- Overlay for pressed state -->
+            <item>
+                <shape>
+                    <solid android:color="#40000000" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Focused state -->
+    <item android:state_focused="true">
+        <layer-list>
+            <!-- Background gradient -->
+            <item>
+                <shape>
+                    <gradient
+                        android:startColor="#FF1493"
+                        android:centerColor="#9932CC"
+                        android:endColor="#00CED1"
+                        android:angle="135" />
+                </shape>
+            </item>
+            <!-- Overlay for focused state -->
+            <item>
+                <shape>
+                    <solid android:color="#20FFFFFF" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Default state -->
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#FF1493"
+                android:centerColor="#9932CC"
+                android:endColor="#00CED1"
+                android:angle="135" />
+        </shape>
+    </item>
+
+</selector>
