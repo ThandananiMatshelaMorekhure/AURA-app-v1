@@ -2,6 +2,7 @@ package com.donation.auraappmarkup
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
@@ -19,33 +20,55 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
+    companion object {
+        private const val TAG = "LoginActivity"
+    }
+
     // Modern way to handle activity results
     private val googleSignInLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result: ActivityResult ->
+        Log.d(TAG, "Google sign in result: ${result.resultCode}")
+
         if (result.resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             try {
                 val account = task.getResult(ApiException::class.java)
+                Log.d(TAG, "Google sign in successful, account: ${account?.email}")
+
                 account?.idToken?.let { token ->
                     val credential = GoogleAuthProvider.getCredential(token, null)
                     auth.signInWithCredential(credential)
                         .addOnCompleteListener(this) { authTask ->
                             if (authTask.isSuccessful) {
+                                Log.d(TAG, "Firebase authentication successful")
                                 navigateToMain()
                             } else {
-                                showError("Google sign in failed: ${authTask.exception?.message}")
+                                val errorMsg = "Firebase auth failed: ${authTask.exception?.message}"
+                                Log.e(TAG, errorMsg)
+                                showError(errorMsg)
                             }
                         }
-                } ?: showError("Google sign in failed: No ID token")
+                } ?: run {
+                    val errorMsg = "Google sign in failed: No ID token"
+                    Log.e(TAG, errorMsg)
+                    showError(errorMsg)
+                }
             } catch (e: ApiException) {
-                showError("Google sign in failed: ${e.message}")
+                val errorMsg = "Google sign in failed: ${e.statusCode} - ${e.message}"
+                Log.e(TAG, errorMsg)
+                showError("Google sign in failed. Please try again.")
+            }
+        } else {
+            Log.d(TAG, "Google sign in cancelled or failed")
+            // User cancelled the sign in flow
+            if (result.resultCode != RESULT_CANCELED) {
+                showError("Google sign in failed. Please try again.")
             }
         }
     }
@@ -58,12 +81,25 @@ class LoginActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+        // Check if user is already signed in
+        if (auth.currentUser != null) {
+            Log.d(TAG, "User already signed in, navigating to main")
+            navigateToMain()
+            return
+        }
+
+        // Configure Google Sign In with error handling
+        try {
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+            googleSignInClient = GoogleSignIn.getClient(this, gso)
+            Log.d(TAG, "Google Sign In configured successfully")
+        } catch (e: Exception) {
+            Log.e(TAG, "Google Sign In configuration failed: ${e.message}")
+            showError("Google Sign In not available")
+        }
 
         setupClickListeners()
         setupWindowInsets()
@@ -92,28 +128,43 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.googleSignInButton.setOnClickListener {
-            googleSignInLauncher.launch(googleSignInClient.signInIntent)
+            Log.d(TAG, "Google sign in button clicked")
+            try {
+                googleSignInLauncher.launch(googleSignInClient.signInIntent)
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to launch Google sign in: ${e.message}")
+                showError("Google Sign In not available. Check your configuration.")
+            }
         }
     }
 
     private fun loginWithEmail(email: String, password: String) {
+        binding.loginButton.isEnabled = false
+
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
+                binding.loginButton.isEnabled = true
+
                 if (task.isSuccessful) {
+                    Log.d(TAG, "Email login successful")
                     navigateToMain()
                 } else {
-                    showError("Authentication failed: ${task.exception?.message}")
+                    val errorMsg = "Authentication failed: ${task.exception?.message}"
+                    Log.e(TAG, errorMsg)
+                    showError("Login failed. Check your credentials.")
                 }
             }
     }
 
     private fun navigateToMain() {
-        startActivity(Intent(this, CycleDashboardAct::class.java))
+        val intent = Intent(this, CycleDashboardAct::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
         finish()
     }
 
     private fun showError(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     private fun setupWindowInsets() {
