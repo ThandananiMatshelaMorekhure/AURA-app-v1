@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="vcmsa.projects.aura" />
+                  <option name="mobileSdkAppId" value="1:1019583454807:android:71168941c1728ab8018d12" />
+                  <option name="projectId" value="aura2-a1ce8" />
+                  <option name="projectNumber" value="1019583454807" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

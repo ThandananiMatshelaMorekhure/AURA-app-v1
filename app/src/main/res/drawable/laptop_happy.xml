@@ -1,0 +1,60 @@
+<!-- File: res/drawable/laptop_happy.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="160dp"
+    android:height="120dp"
+    android:viewportWidth="160"
+    android:viewportHeight="120">
+
+    <!-- Laptop Screen Background -->
+    <path
+        android:fillColor="#F5F5F5"
+        android:pathData="M20,10 L140,10 Q145,10 145,15 L145,75 Q145,80 140,80 L20,80 Q15,80 15,75 L15,15 Q15,10 20,10 Z" />
+
+    <!-- Screen -->
+    <path
+        android:fillColor="#B8E6B8"
+        android:pathData="M25,18 L135,18 Q138,18 138,21 L138,72 Q138,75 135,75 L25,75 Q22,75 22,72 L22,21 Q22,18 25,18 Z" />
+
+    <!-- Laptop Base -->
+    <path
+        android:fillColor="#EEEEEE"
+        android:pathData="M10,78 L150,78 Q155,78 155,83 L155,102 Q155,107 150,107 L10,107 Q5,107 5,102 L5,83 Q5,78 10,78 Z" />
+
+    <!-- Keyboard Keys (converted rect → path) -->
+    <path android:fillColor="#BDBDBD" android:pathData="M20,85 h25 v4 h-25 z"/>
+    <path android:fillColor="#BDBDBD" android:pathData="M20,92 h25 v4 h-25 z"/>
+
+    <path android:fillColor="#BDBDBD" android:pathData="M50,85 h25 v4 h-25 z"/>
+    <path android:fillColor="#BDBDBD" android:pathData="M50,92 h25 v4 h-25 z"/>
+
+    <path android:fillColor="#BDBDBD" android:pathData="M80,85 h25 v4 h-25 z"/>
+    <path android:fillColor="#BDBDBD" android:pathData="M80,92 h25 v4 h-25 z"/>
+
+    <path android:fillColor="#BDBDBD" android:pathData="M110,85 h25 v4 h-25 z"/>
+    <path android:fillColor="#BDBDBD" android:pathData="M110,92 h25 v4 h-25 z"/>
+
+    <!-- Screen Decorative Lines -->
+    <path android:fillColor="#2E7D32" android:pathData="M35,28 h12 v2 h-12 z"/>
+    <path android:fillColor="#2E7D32" android:pathData="M35,32 h8 v2 h-8 z"/>
+
+    <path android:fillColor="#2E7D32" android:pathData="M113,28 h16 v2 h-16 z"/>
+    <path android:fillColor="#2E7D32" android:pathData="M119,32 h10 v2 h-10 z"/>
+
+    <path android:fillColor="#2E7D32" android:pathData="M35,58 h10 v2 h-10 z"/>
+    <path android:fillColor="#2E7D32" android:pathData="M35,62 h6 v2 h-6 z"/>
+
+    <path android:fillColor="#2E7D32" android:pathData="M115,58 h14 v2 h-14 z"/>
+
+    <!-- Happy Face Eyes (^_^) -->
+    <path android:fillColor="#2E7D32" android:pathData="M65,40 L70,45 L65,50 Z" />
+    <path android:fillColor="#2E7D32" android:pathData="M95,40 L90,45 L95,50 Z" />
+
+    <!-- Happy Face Smile -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#2E7D32"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M68,52 Q80,58 92,52" />
+
+</vector>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/gradient_background_success">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center"
+        android:minHeight="400dp">
+
+        <!-- Close button -->
+        <ImageView
+            android:id="@+id/ivCloseServerError"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_arrow_right"
+            android:layout_gravity="end"
+            android:layout_marginBottom="16dp"
+            android:padding="4dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            app:tint="@android:color/white" />
+
+        <!-- Server error laptop illustration -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="24dp">
+
+            <!-- Laptop screen with server error -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="6dp"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="@color/laptop_screen_purple">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <!-- Dizzy face -->
+                    <TextView
+                        android:id="@+id/tvDizzyFace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@_@"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_purple"
+                        android:layout_centerInParent="true" />
+
+                    <!-- Server/Cloud icon -->
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@drawable/ic_cloud_off_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="3dp"
+                        android:layout_marginTop="3dp"
+                        app:tint="@color/dark_purple" />
+
+                    <!-- Loading/Error dots -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="6dp">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="2dp"
+                            android:background="@drawable/circle_dot"
+                            android:backgroundTint="@color/dark_purple"
+                            android:layout_marginEnd="1dp" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="2dp"
+                            android:background="@drawable/circle_dot"
+                            android:backgroundTint="@color/dark_purple"
+                            android:layout_marginEnd="1dp"
+                            android:alpha="0.6" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="2dp"
+                            android:background="@drawable/circle_dot"
+                            android:backgroundTint="@color/dark_purple"
+                            android:alpha="0.3" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Laptop keyboard -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="120dp"
+                android:layout_height="14dp"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="@color/laptop_keyboard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="3dp"
+                    android:gravity="center">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:background="@color/keyboard_key"
+                        android:layout_marginEnd="1dp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:background="@color/keyboard_key"
+                        android:layout_marginEnd="1dp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:background="@color/keyboard_key"
+                        android:layout_marginEnd="1dp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:background="@color/keyboard_key" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- Server error message -->
+        <TextView
+            android:id="@+id/tvServerErrorTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="server busy!"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvServerErrorMessage"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:maxWidth="280dp"
+            android:text="our servers are overloaded.\ntry again in a moment."
+            android:textSize="15sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"
+            android:lineSpacingExtra="4dp" />
+
+        <!-- Wait and retry button -->
+        <Button
+            android:id="@+id/btnWaitAndRetry"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            android:text="try later"
+            android:textColor="@color/dark_purple"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:backgroundTint="@android:color/white"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.Material3.Button" />
+
+    </LinearLayout>
+
+</ScrollView>

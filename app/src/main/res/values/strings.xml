@@ -38,4 +38,86 @@
     <string name="articles_clicked">Daily Articles clicked</string>
     <string name="analysis_clicked">Analysis clicked</string>
     <string name="settings_clicked">Settings clicked</string>
+
+    <string-array name="priority_levels">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+    <!-- Privacy Policy Section 1: Data Collection -->
+    <string name="section1_content">We collect the following types of data to provide you with personalized menstrual health insights:\n\n• Menstrual cycle data: Period start and end dates, flow intensity, cycle length, and related symptoms\n• Health information: Mood changes, physical symptoms, sleep patterns, and wellness indicators\n• Personal details: Age, weight, height, and other optional health metrics\n• Device information: Device type, operating system version, app version, and unique device identifiers\n• Usage analytics: App interactions, feature usage patterns, session duration, and crash reports\n• Location data: General location information for weather-related insights (only if enabled)\n\nAll sensitive health data is encrypted both in transit and at rest using industry-standard encryption protocols. Your data is stored securely on HIPAA-compliant servers with multiple layers of protection.</string>
+
+    <!-- Privacy Policy Section 2: Data Usage -->
+    <string name="section2_content">We use your personal data for the following specific purposes:\n\n• Cycle prediction: Advanced algorithms analyze your data to predict menstrual cycles, fertile windows, and ovulation periods\n• Health insights: Generate personalized recommendations, identify patterns, and provide health tips based on your unique cycle\n• Symptom tracking: Help you monitor and understand correlations between physical symptoms, mood changes, and cycle phases\n• App optimization: Improve app functionality, fix bugs, and develop new features based on usage patterns\n• Notifications: Send you timely reminders about your cycle, medication, appointments, and health tips (with your explicit consent)\n• Research participation: Anonymous, aggregated data may contribute to women\'s health research (strictly opt-in only)\n• Customer support: Assist with technical issues and provide personalized help when you contact us\n\nWe never use your personal health data for advertising purposes, and we do not sell your information to third parties under any circumstances.</string>
+
+    <!-- Privacy Policy Section 3: Data Disclosure -->
+    <string name="section3_content">We maintain strict control over your personal data and limit sharing to these specific scenarios:\n\n• Healthcare providers: Only when you explicitly choose to share your cycle data with your doctor or healthcare team through our secure sharing features\n• Trusted service providers: Third-party companies that help us operate our app (cloud storage, analytics, customer support) under strict confidentiality agreements and data processing agreements\n• Legal compliance: When required by applicable laws, court orders, or government regulations, or to protect our legal rights and user safety\n• Medical emergencies: If you provide emergency contact information and our algorithms detect concerning health patterns that may require immediate attention\n• Business transfers: In the unlikely event of a merger or acquisition, your data would transfer under the same privacy protections\n• Anonymous research: De-identified, aggregated data for academic research (no personal information included)\n\nAll third-party partners must comply with GDPR, HIPAA, and other applicable privacy regulations. You maintain full control over what data you share and can revoke permissions at any time through your account settings.</string>
+
+    <!-- Privacy Policy Section 4: Data Security -->
+    <string name="section4_content">We implement comprehensive security measures to protect your sensitive health information:\n\n• End-to-end encryption: All sensitive data is encrypted using AES-256 encryption before transmission and storage\n• Secure data transmission: All communications use TLS 1.3 protocol with certificate pinning for maximum security\n• Regular security audits: Independent third-party security firms conduct quarterly penetration testing and vulnerability assessments\n• Compliance standards: Full compliance with HIPAA, GDPR, SOC 2 Type II, and ISO 27001 security frameworks\n• Biometric authentication: Support for fingerprint, Face ID, and other biometric security features on compatible devices\n• Automatic data backup: Encrypted backups ensure your data is safe and recoverable while maintaining security\n• Security monitoring: 24/7 monitoring systems detect and respond to potential security threats in real-time\n• Employee training: All staff undergo regular security training and background checks, with access limited on a need-to-know basis\n• Data retention policies: Automatic deletion of old data according to your preferences and legal requirements\n\nYour data is stored on secure, certified cloud infrastructure with multiple redundancy layers and geographic distribution for maximum protection and availability.</string>
+
+    <!-- Privacy Policy Section 5: Your Rights -->
+    <string name="section5_content">You have comprehensive control over your personal data and privacy:\n\n• Right to access: View, download, or export all data we have collected about you in a portable format\n• Right to rectification: Correct, update, or modify any inaccurate or incomplete personal information\n• Right to erasure: Request complete deletion of your account and all associated data (\"right to be forgotten\")\n• Right to data portability: Export your data in standard formats to transfer to other services\n• Right to restriction: Limit how we process your data or temporarily suspend certain data processing activities\n• Right to object: Opt-out of specific data processing activities, including analytics and research participation\n• Right to withdraw consent: Revoke previously given permissions at any time through your account settings\n• Right to lodge complaints: File complaints with data protection authorities if you believe your rights have been violated\n• Transparency reports: Access detailed reports about how your data has been used and shared\n\nTo exercise any of these rights, contact us at privacy@menstrualcycleapp.com or use the built-in privacy controls in your account settings. We will respond to all requests within 30 days and provide confirmation of actions taken. Most rights can be exercised directly through the app without contacting support.</string>
+
+    <!-- Additional strings for the layout -->
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="section1_title">1. Types data we collect</string>
+    <string name="section2_title">2. Use of your personal data</string>
+    <string name="section3_title">3. Disclosure of your personal data</string>
+    <string name="section4_title">4. Data Security</string>
+    <string name="section5_title">5. Your Rights</string>
+    <string name="last_updated">Last updated: September 2025</string>
+
+    <!-- Contact information -->
+    <string name="privacy_contact_email">privacy@menstrualcycleapp.com</string>
+    <string name="support_contact_email">support@menstrualcycleapp.com</string>
+
+
+    <string-array name="cycle_length_options">
+        <item>I am not sure</item>
+        <item>21-25 days</item>
+        <item>26-30 days (most common)</item>
+        <item>31-35 days</item>
+        <item>Irregular</item>
+    </string-array>
+
+    <string-array name="period_duration_options">
+        <item>I am not sure</item>
+        <item>3-4 days</item>
+        <item>5-6 days (most common)</item>
+        <item>7+ days</item>
+    </string-array>
+
+    <string-array name="notification_options">
+        <item>Remind me 2 days before</item>
+        <item>Remind me 1 day before</item>
+        <item>No reminders</item>
+    </string-array>
+    <string name="welcome_header">Welcome to Aura</string>
+    <string name="welcome_subheader">Let\'s set up your cycle tracker</string>
+    <string name="setup_header">📅 Basic Setup</string>
+    <string name="setup_subheader">We\'ll use this to predict your cycle</string>
+
+    <string name="last_period_label">Last Period Start Date</string>
+    <string name="last_period_hint">Select date</string>
+
+    <string name="cycle_length_label">Typical Cycle Length</string>
+    <string name="cycle_length_hint">Select cycle length</string>
+
+    <string name="period_duration_label">Period Duration</string>
+    <string name="period_duration_hint">Select period duration</string>
+
+    <string name="notifications_label">Notifications</string>
+    <string name="notifications_hint">Select notification preference</string>
+
+    <string name="btn_skip">Skip</string>
+    <string name="btn_continue">Continue</string>
+
+    <string name="footer_tagline">Track • Predict • Thrive</string>
+
+    <string name="default_web_client_id">1019583454807-j8gla40o8r3a9t4phgtlu5pdt895at8p.apps.googleusercontent.com</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

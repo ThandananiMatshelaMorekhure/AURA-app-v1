@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/settings_gradient_background"
-    tools:context=".Prolife">
+    tools:context=".Profile">
 
     <!-- Header with Settings title -->
     <LinearLayout
@@ -68,7 +68,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-
+                        android:src="@drawable/profile_placeholder"
                         android:layout_marginEnd="16dp" />
 
                     <TextView
@@ -126,32 +126,32 @@
                     android:layout_marginVertical="8dp" />
 
                 <!-- Language -->
-                <LinearLayout
-                    android:id="@+id/language"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingHorizontal="4dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/language"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="56dp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:paddingHorizontal="4dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:background="?android:attr/selectableItemBackground">-->
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Language"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black" />
+<!--                    <TextView-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:text="Language"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:textColor="@android:color/black" />-->
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_arrow_right"
-                        app:tint="@android:color/black" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="24dp"-->
+<!--                        android:layout_height="24dp"-->
+<!--                        android:src="@drawable/ic_arrow_right"-->
+<!--                        app:tint="@android:color/black" />-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
                 <View
                     android:layout_width="match_parent"
@@ -160,24 +160,25 @@
                     android:layout_marginVertical="8dp" />
 
                 <!-- Edit Profile -->
+
                 <LinearLayout
                     android:id="@+id/edit_profile"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingHorizontal="4dp"
+                    android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Edit Profile"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
 
                     <ImageView
                         android:layout_width="24dp"
@@ -240,15 +241,15 @@
                 <TextView
                     android:id="@+id/about_us"
                     android:layout_width="wrap_content"
-                    android:layout_height="56dp"
-                    android:text="About Us"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_vertical"
-                    android:paddingHorizontal="4dp"
+                    android:layout_height="60dp"
+                    android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground" />
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="4dp"
+                    android:text="About Us"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -264,16 +265,6 @@
         android:padding="16dp"
         android:gravity="center"
         android:background="@android:color/transparent">
-
-        <ImageView
-            android:id="@+id/ic_search"
-        android:layout_width="0dp"
-        android:layout_height="28dp"
-        android:layout_weight="1"
-        android:src="@drawable/ic_search"
-        android:contentDescription="Search"
-        android:layout_marginHorizontal="8dp"
-        app:tint="@android:color/white" />
 
         <ImageView
             android:id="@+id/ic_profile"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F1EF"
+    android:background="@drawable/settings_gradient_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -37,7 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="today tasks"
+                android:text="Today Tasks"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#2D2D2D"
@@ -48,7 +48,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:src="notifications"
+                android:src="@drawable/ic_notifications"
                 android:contentDescription="notifications"
                 app:tint="#8B7355"
                 android:scaleType="centerInside"
@@ -74,7 +74,9 @@
                 android:layout_margin="4dp"
                 android:background="@drawable/date_unselected_bg"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:minWidth="48dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -112,7 +114,9 @@
                 android:layout_margin="4dp"
                 android:background="@drawable/date_unselected_bg"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:minWidth="48dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -150,7 +154,9 @@
                 android:layout_margin="4dp"
                 android:background="@drawable/date_selected_bg"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:minWidth="48dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -188,7 +194,9 @@
                 android:layout_margin="4dp"
                 android:background="@drawable/date_unselected_bg"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:minWidth="48dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -226,7 +234,9 @@
                 android:layout_margin="4dp"
                 android:background="@drawable/date_unselected_bg"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:minWidth="48dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -256,7 +266,7 @@
 
         </LinearLayout>
 
-        <!-- Filter Tabs -->
+        <!-- Filter Tabs - FIXED TOUCH TARGET SIZE -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -266,34 +276,43 @@
             <Button
                 android:id="@+id/btn_all"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:minWidth="48dp"
                 android:text="all"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
                 android:background="@drawable/filter_selected_bg"
                 android:paddingHorizontal="20dp"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="8dp"
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/btn_todo"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:minWidth="48dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/filter_unselected_bg"
                 android:paddingHorizontal="20dp"
                 android:text="to do"
                 android:textColor="#FAF8F7"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/btn_in_progress"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:minWidth="48dp"
                 android:background="@drawable/filter_unselected_bg"
                 android:paddingHorizontal="20dp"
                 android:text="in progress"
                 android:textColor="#FFFEFC"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:gravity="center" />
 
         </LinearLayout>
 

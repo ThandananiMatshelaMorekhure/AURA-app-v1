@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,19 +16,19 @@
         android:theme="@style/Theme.AURAAPPMarkUp"
         tools:targetApi="31">
         <activity
-            android:name=".Prolife"
+            android:name=".EditProfile"
             android:exported="false" />
         <activity
-            android:name=".Articles"
+            android:name=".AboutUs"
             android:exported="false" />
+        <!--
+            LAUNCHER ACTIVITY - First screen when app opens
+            Operation: User authentication - handles login with email/password
+            Navigation: → SignUpActivity (if new user) → CycleDashboardAct (after successful login)
+            Exported: true (required for launcher activities)
+        -->
         <activity
-            android:name=".Noticatifcation"
-            android:exported="false" />
-        <activity
-            android:name=".ToDoList"
-            android:exported="false" />
-        <activity
-            android:name=".Dashboard"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,9 +36,127 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
+            MAIN DASHBOARD - Central hub after login
+            Operation: Displays cycle calendar, predictions, quick access to features
+            Navigation: ← LoginActivity/OnBoardingActivity → SymptomTrackingActivity, HistoryActivity, Profile, etc.
+            Exported: false (only accessed internally from within app)
+        -->
         <activity
-            android:name=".MainActivity"
+            android:name=".CycleDashboardAct"
             android:exported="false" />
+        <!--
+            SYMPTOM TRACKING - Daily health monitoring
+            Operation: Track menstrual symptoms, mood, flow, notes
+            Navigation: ← CycleDashboardAct → CycleDashboardAct (after save)
+            Exported: false (accessed from dashboard navigation)
+        -->
+        <activity
+            android:name=".SymptomTrackingActivity"
+            android:exported="false" />
+        <!--
+            HISTORY VIEW - Past cycle and symptom data
+            Operation: Display historical cycle data, past symptoms, trends
+            Navigation: ← CycleDashboardAct → CycleDashboardAct
+            Exported: false (accessed from dashboard navigation)
+        -->
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <!--
+            USER REGISTRATION - New account creation
+            Operation: User sign-up with email, password, basic info
+            Navigation: ← LoginActivity → LoginActivity (after successful registration)
+            Exported: false (only accessed from login screen)
+        -->
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <!--
+            ONBOARDING SETUP - Initial user preferences
+            Operation: First-time setup for cycle length, period duration, notifications
+            Navigation: ← LoginActivity (for new users) → CycleDashboardAct
+            Exported: false (only shown once for new users)
+        -->
+        <activity
+            android:name=".OnBoardingActivity"
+            android:exported="false" />
+        <!--
+            PRIVACY POLICY - Legal information
+            Operation: Display app privacy policy and terms of service
+            Navigation: ← LoginActivity/SignUpActivity → Previous activity
+            Exported: false (accessed from login/signup flows)
+        -->
+        <activity
+            android:name=".PrivacyPolicy"
+            android:exported="false" />
+        <!--
+            PASSWORD CHANGE - Security settings
+            Operation: Allow users to change their password
+            Navigation: ← Profile activity → Profile activity
+            Exported: false (accessed from user profile)
+        -->
+        <activity
+            android:name=".PasswordChange"
+            android:exported="false" />
+        <!--
+            ERROR DIALOG - Network/server issues
+            Operation: Display server connection errors
+            Navigation: ← Various activities (when API calls fail) → Previous activity
+            Exported: false (shown modally over other activities)
+        -->
+        <activity
+            android:name=".dialog_server_error"
+            android:exported="false" />
+        <!--
+            SUCCESS DIALOG - Password change confirmation
+            Operation: Confirm successful password change
+            Navigation: ← PasswordChange activity → LoginActivity/Profile
+            Exported: false (shown modally after password change)
+        -->
+        <activity
+            android:name=".dialog_password_success"
+            android:exported="false" />
+        <!--
+            USER PROFILE - Account management
+            Operation: Display user info, settings, logout option
+            Navigation: ← CycleDashboardAct → PasswordChange, PrivacyPolicy
+            Exported: false (accessed from main navigation)
+        -->
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <!--
+            EDUCATIONAL CONTENT - Health articles
+            Operation: Display menstrual health information and articles
+            Navigation: ← CycleDashboardAct → CycleDashboardAct
+            Exported: false (accessed from main navigation)
+        -->
+        <activity
+            android:name=".ui.Articles"
+            android:exported="false" />
+        <!--
+            NOTIFICATIONS CENTER - App notifications
+            Operation: Display app notifications and reminders
+            Navigation: ← CycleDashboardAct → CycleDashboardAct
+            Exported: false (accessed from main navigation)
+        -->
+        <activity
+            android:name=".Notification"
+            android:exported="false" />
+        <!--
+            TASK MANAGEMENT - To-do list
+            Operation: Manage tasks, reminders related to cycle
+            Navigation: ← CycleDashboardAct → CycleDashboardAct
+            Exported: false (accessed from main navigation)
+        -->
+        <activity
+            android:name=".ToDoList"
+            android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
