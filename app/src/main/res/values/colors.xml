@@ -6,7 +6,7 @@
    /// articles
     <color name="purple">#593c8f</color>
     <color name="yellow">#FFC000</color>
-
+    <color name="primary_dark">#1e4a56</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

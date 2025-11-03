@@ -116,8 +116,6 @@
 
     <string name="footer_tagline">Track • Predict • Thrive</string>
 
-    <string name="default_web_client_id">1019583454807-j8gla40o8r3a9t4phgtlu5pdt895at8p.apps.googleusercontent.com</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="web_client_id">1019583454807-j8gla40o8r3a9t4phgtlu5pdt895at8p.apps.googleusercontent.com</string>
 
 </resources>

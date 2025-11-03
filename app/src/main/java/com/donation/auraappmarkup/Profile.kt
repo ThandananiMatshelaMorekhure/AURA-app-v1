@@ -46,6 +46,7 @@ class Profile : AppCompatActivity() {
 
         profileButton?.setOnClickListener {
             // Already on profile page, so do nothing or refresh
+            // Optionally refresh profile data if needed
         }
 
         calendarButton?.setOnClickListener {
@@ -84,23 +85,25 @@ class Profile : AppCompatActivity() {
             navigateToAboutUs()
         }
 
-//        // Language option - using LinearLayout ID
-//        val languageOption = findViewById<LinearLayout>(R.id.language)
-//        languageOption?.setOnClickListener {
-//            navigateToLanguageSettings()
-//        }
+        // Language option - using LinearLayout ID (commented out for now)
+        /*
+        val languageOption = findViewById<LinearLayout>(R.id.language)
+        languageOption?.setOnClickListener {
+            navigateToLanguageSettings()
+        }
+        */
     }
 
     private fun navigateToDashboard() {
         val intent = Intent(this, CycleDashboardAct::class.java)
         startActivity(intent)
-        finish()
+        finish() // Finish profile since we're going to dashboard
     }
 
     private fun navigateToToDoList() {
         val intent = Intent(this, ToDoList::class.java)
         startActivity(intent)
-        finish()
+        finish() // Finish profile since we're going to todo list
     }
 
     private fun navigateToCalendar() {
@@ -108,6 +111,7 @@ class Profile : AppCompatActivity() {
         // val intent = Intent(this, CalendarActivity::class.java)
         // startActivity(intent)
         // For now, show a message or do nothing
+        // Note: Remove finish() here since we don't have calendar yet
     }
 
     private fun navigateToChangePassword() {
@@ -121,33 +125,38 @@ class Profile : AppCompatActivity() {
         val intent = Intent(this, EditProfile::class.java)
         intent.putExtra("edit_mode", true)
         startActivity(intent)
+        // Don't finish() so user can come back to profile
     }
 
     private fun navigateToNotification() {
         val intent = Intent(this, Notification::class.java)
         startActivity(intent)
+        // Don't finish() so user can come back to profile
     }
 
     private fun navigateToPrivacyPolicy() {
         val intent = Intent(this, PrivacyPolicy::class.java)
         startActivity(intent)
+        // Don't finish() so user can come back to profile
     }
 
     private fun navigateToAboutUs() {
-        // Navigate to AboutUs activity or show dialog
-         val intent = Intent(this, AboutUs::class.java)
-         startActivity(intent)
+        // Navigate to AboutUs activity
+        val intent = Intent(this, AboutUs::class.java)
+        startActivity(intent)
+        // Don't finish() so user can come back to profile
     }
 
     private fun navigateToLanguageSettings() {
         // Navigate to Language settings activity or show dialog
         // val intent = Intent(this, LanguageSettings::class.java)
         // startActivity(intent)
+        // Don't finish() so user can come back to profile
     }
 
-    // Handle back button press
+    // Handle back button press - go to dashboard
     override fun onBackPressed() {
-        super.onBackPressed() // Added super call to fix the warning
+        super.onBackPressed()
         navigateToDashboard()
     }
 }

@@ -2,10 +2,8 @@ package com.donation.auraappmarkup
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import com.donation.auraappmarkup.data.AppDatabase
 import com.donation.auraappmarkup.databinding.ActivityCycleDashboardBinding
@@ -23,7 +21,7 @@ import java.util.Locale
 class CycleDashboardAct : AppCompatActivity() {
     private lateinit var binding: ActivityCycleDashboardBinding
     private val auth by lazy { Firebase.auth }
-    private val fireStore by lazy { Firebase.firestore }
+    private val firestore by lazy { Firebase.firestore }
     private val db by lazy { AppDatabase.getDatabase(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,61 +32,27 @@ class CycleDashboardAct : AppCompatActivity() {
         checkUserSetup()
         setupNavigation()
         setupBottomNavigation()
-        setupButtonClicks() // Added for the plus button
-        setupQuickAccessCards() // Added for the new cards
-    }
-
-    private fun setupQuickAccessCards() {
-        val todoListCard: CardView = findViewById(R.id.todoListCard)
-        val articlesCard: CardView = findViewById(R.id.articlesCard)
-
-        todoListCard.setOnClickListener {
-            startActivity(Intent(this, ToDoList::class.java))
-        }
-
-        articlesCard.setOnClickListener {
-            startActivity(Intent(this, Articles::class.java))
-        }
+        setupButtonClicks()
     }
 
     private fun setupButtonClicks() {
-//        // Plus button (To Do List) functionality
-//        binding.btnTodo.setOnClickListener {
-//            val intent = Intent(this, ToDoList::class.java)
-//            startActivity(intent)
-//        }
+        binding.trackSymptomsButton.setOnClickListener{
+            startActivity(Intent(this,SymptomTrackingActivity::class.java))
+        }
+        // To-Do List Card
+        binding.todoListCard.setOnClickListener {
+            startActivity(Intent(this, ToDoList::class.java))
+        }
 
+        // Articles Card
+        binding.articlesCard.setOnClickListener {
+            startActivity(Intent(this, Articles::class.java))
+        }
+
+        // Profile button
         binding.ivProfileImage.setOnClickListener {
-            val intent = Intent(this, Profile::class.java)
-            startActivity(intent)
-
+            startActivity(Intent(this, Profile::class.java))
         }
-
-
-        // Add Symptoms card functionality (the + card in mood section)
-        // Note: You'll need to add an ID to this card in XML first
-        // For example: android:id="@+id/addSymptomsCard"
-        // Then uncomment below:
-        /*
-        binding.addSymptomsCard.setOnClickListener {
-            val intent = Intent(this, SymptomTrackingActivity::class.java)
-            startActivity(intent)
-        }
-        */
-
-        // Mood cards click listeners (optional - for tracking mood directly)
-        // You'll need to add IDs to your mood cards in XML first
-        /*
-        binding.sadMoodCard.setOnClickListener {
-            trackMood("Sad")
-        }
-        binding.neutralMoodCard.setOnClickListener {
-            trackMood("Neutral")
-        }
-        binding.happyMoodCard.setOnClickListener {
-            trackMood("Happy")
-        }
-        */
     }
 
     private fun setupBottomNavigation() {
@@ -140,19 +104,27 @@ class CycleDashboardAct : AppCompatActivity() {
             val predictions = calculatePredictions(prefs)
 
             binding.apply {
-                // Set default name first
-                welcomeText.text = "User" // Default until we fetch from Firestore
-
-                // Get user name from Firestore
+                // Get user name from Firestore if available
                 val userId = auth.currentUser?.uid
                 if (userId != null) {
-                    fetchUserName(userId)
+                    firestore.collection("users").document(userId)
+                        .get()
+                        .addOnSuccessListener { document ->
+                            if (document.exists()) {
+                                val userName = document.getString("name") ?: "User"
+                                welcomeText.text = userName
+                            }
+                        }
                 }
 
-                // Current Cycle Card
+                // Current Cycle Card - Update cycle day
                 currentCycleDay.text = "Day ${predictions.currentDay}"
 
-                // Update hidden elements
+                // Update pregnancy probability in the heart card
+                val pregnancyTextView = root.findViewById<android.widget.TextView>(R.id.pregnancyProbability)
+                pregnancyTextView?.text = String.format("%.1f%%", predictions.pregnancyProbability)
+
+                // Update the hidden elements for background calculations
                 nextPeriodDate.text = predictions.nextPeriodDate
                 daysUntilNextPeriod.text = "${predictions.daysUntilNextPeriod} days away"
                 fertileWindow.text = predictions.fertileWindow
@@ -161,53 +133,6 @@ class CycleDashboardAct : AppCompatActivity() {
             Toast.makeText(this, "Error displaying data", Toast.LENGTH_SHORT).show()
         }
     }
-
-    private fun fetchUserName(userId: String) {
-        fireStore.collection("users").document(userId)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    // Try different possible field names for the user's name
-                    val userName = when {
-                        document.getString("name") != null -> document.getString("name")
-                        document.getString("displayName") != null -> document.getString("displayName")
-                        document.getString("firstName") != null -> document.getString("firstName")
-                        document.getString("username") != null -> document.getString("username")
-                        document.getString("email") != null -> {
-                            // Extract name from email (e.g., "emily@email.com" -> "Emily")
-                            val email = document.getString("email") ?: ""
-                            email.substringBefore("@").replaceFirstChar { it.uppercase() }
-                        }
-                        else -> "User" // Default fallback
-                    }
-
-                    binding.welcomeText.text = userName ?: "User"
-                    Log.d("CycleDashboardAct", "User name set to: $userName")
-                } else {
-                    // Document doesn't exist, use email as fallback
-                    val userEmail = auth.currentUser?.email
-                    val displayName = if (!userEmail.isNullOrEmpty()) {
-                        userEmail.substringBefore("@").replaceFirstChar { it.uppercase() }
-                    } else {
-                        "User"
-                    }
-                    binding.welcomeText.text = displayName
-                    Log.d("CycleDashboardAct", "User document not found, using: $displayName")
-                }
-            }
-            .addOnFailureListener { e ->
-                Log.e("CycleDashboardAct", "Error fetching user name: ${e.message}")
-                // Fallback to email if Firestore fails
-                val userEmail = auth.currentUser?.email
-                val displayName = if (!userEmail.isNullOrEmpty()) {
-                    userEmail.substringBefore("@").replaceFirstChar { it.uppercase() }
-                } else {
-                    "User"
-                }
-                binding.welcomeText.text = displayName
-            }
-    }
-
 
     private fun calculatePredictions(prefs: UserPreferences): CyclePredictions {
         return try {
@@ -235,19 +160,34 @@ class CycleDashboardAct : AppCompatActivity() {
             val daysSinceLast = ((today.timeInMillis - calendar.timeInMillis) / (24 * 60 * 60 * 1000)).toInt()
             val currentDay = (daysSinceLast % cycleLength) + 1
 
-            // Calculate fertile window (approx 10-17 days before next period)
+            // Calculate fertile window (typically days 10-17 for a 28-day cycle)
+            // Ovulation occurs around day 14, fertile window is 5 days before + day of ovulation
+            val ovulationDay = cycleLength - 14 // Day of ovulation in cycle
+            val fertileStartDay = (ovulationDay - 5).coerceAtLeast(1)
+            val fertileEndDay = (ovulationDay + 1).coerceAtMost(cycleLength)
+
             calendar.time = lastPeriod
-            calendar.add(Calendar.DAY_OF_YEAR, cycleLength - 17)
+            calendar.add(Calendar.DAY_OF_YEAR, fertileStartDay - 1)
             val fertileStart = format.format(calendar.time)
-            calendar.add(Calendar.DAY_OF_YEAR, 7)
+            calendar.time = lastPeriod
+            calendar.add(Calendar.DAY_OF_YEAR, fertileEndDay - 1)
             val fertileEnd = format.format(calendar.time)
+
+            // Calculate pregnancy probability based on cycle day
+            val pregnancyProbability = calculatePregnancyProbability(
+                currentDay = currentDay,
+                ovulationDay = ovulationDay,
+                fertileStartDay = fertileStartDay,
+                fertileEndDay = fertileEndDay
+            )
 
             CyclePredictions(
                 currentDay = currentDay.coerceIn(1, cycleLength),
                 cycleLength = cycleLength,
                 nextPeriodDate = nextPeriodDate,
                 daysUntilNextPeriod = daysUntil.coerceAtLeast(0),
-                fertileWindow = "$fertileStart - $fertileEnd"
+                fertileWindow = "$fertileStart - $fertileEnd",
+                pregnancyProbability = pregnancyProbability
             )
         } catch (e: Exception) {
             // Return default predictions if calculation fails
@@ -256,8 +196,45 @@ class CycleDashboardAct : AppCompatActivity() {
                 cycleLength = 28,
                 nextPeriodDate = "Not available",
                 daysUntilNextPeriod = 0,
-                fertileWindow = "Not available"
+                fertileWindow = "Not available",
+                pregnancyProbability = 0.0
             )
+        }
+    }
+
+    private fun calculatePregnancyProbability(
+        currentDay: Int,
+        ovulationDay: Int,
+        fertileStartDay: Int,
+        fertileEndDay: Int
+    ): Double {
+        return when {
+            // During menstruation (days 1-5): Very low probability
+            currentDay in 1..5 -> 1.0
+
+            // Pre-fertile phase (days 6-9): Low probability
+            currentDay in 6..(fertileStartDay - 1) -> 5.0
+
+            // Early fertile window (2-3 days before ovulation): Moderate probability
+            currentDay in fertileStartDay..(ovulationDay - 3) -> 15.0
+
+            // Peak fertile days (2 days before ovulation): High probability
+            currentDay in (ovulationDay - 2)..(ovulationDay - 1) -> 30.0
+
+            // Ovulation day: Highest probability
+            currentDay == ovulationDay -> 33.0
+
+            // Day after ovulation: Still high probability
+            currentDay == (ovulationDay + 1) -> 25.0
+
+            // Late fertile window: Decreasing probability
+            currentDay in (ovulationDay + 2)..fertileEndDay -> 10.0
+
+            // Post-fertile/luteal phase: Very low probability
+            currentDay > fertileEndDay -> 2.0
+
+            // Default
+            else -> 1.0
         }
     }
 
@@ -268,8 +245,6 @@ class CycleDashboardAct : AppCompatActivity() {
                 Toast.makeText(this@CycleDashboardAct, "Logged out successfully", Toast.LENGTH_SHORT).show()
                 redirectToLogin()
             }
-
-            // Settings button moved to setupButtonClicks() for better organization
         }
     }
 
@@ -278,36 +253,12 @@ class CycleDashboardAct : AppCompatActivity() {
         finish()
     }
 
-    // Optional: Method to track mood directly from dashboard
-    private fun trackMood(mood: String) {
-        val userId = auth.currentUser?.uid
-        if (userId != null) {
-            val today = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Calendar.getInstance().time)
-
-            val moodData = mapOf(
-                "mood" to mood,
-                "date" to today,
-                "timestamp" to System.currentTimeMillis()
-            )
-
-            fireStore.collection("users").document(userId)
-                .collection("moodEntries")
-                .document(today)
-                .set(moodData)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Mood tracked: $mood", Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(this, "Failed to track mood", Toast.LENGTH_SHORT).show()
-                }
-        }
-    }
-
     data class CyclePredictions(
         val currentDay: Int,
         val cycleLength: Int,
         val nextPeriodDate: String,
         val daysUntilNextPeriod: Int,
-        val fertileWindow: String
+        val fertileWindow: String,
+        val pregnancyProbability: Double // NEW: Added pregnancy probability
     )
 }

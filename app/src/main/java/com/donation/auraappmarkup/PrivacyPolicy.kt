@@ -1,7 +1,6 @@
 package com.donation.auraappmarkup
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -33,14 +32,12 @@ class PrivacyPolicy : AppCompatActivity() {
     }
 
     private fun returnToProfile() {
-        val intent = Intent(this, Profile::class.java)
-        startActivity(intent)
-        finish() // Close this activity
+        finish() // Simply close this activity, returns to existing Profile
     }
 
     // Handle system back button press
     override fun onBackPressed() {
         super.onBackPressed()
-        returnToProfile()
+        finish() // Simply close this activity
     }
 }
