@@ -18,9 +18,7 @@
         <activity
             android:name=".EditProfile"
             android:exported="false" />
-        <activity
-            android:name=".AboutUs"
-            android:exported="false" />
+
         <!--
             LAUNCHER ACTIVITY - First screen when app opens
             Operation: User authentication - handles login with email/password
@@ -154,6 +152,10 @@
             android:name=".ToDoList"
             android:exported="false" />
 
+
+        <activity
+            android:name=".AboutUs"
+            android:exported="false" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

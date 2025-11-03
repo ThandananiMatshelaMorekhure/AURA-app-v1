@@ -189,6 +189,22 @@
                     android:id="@+id/googleSignInButton"
                     android:layout_width="match_parent"
                     android:layout_height="56dp" />
+
+                <!-- Biometric Sign-in (always present in layout) -->
+
+                <Button
+                    android:id="@+id/btn_biometric_signin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_outline"
+                    android:text="Sign in with biometrics"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+                    android:drawableStart="@drawable/ic_fingerprint"
+                    android:drawablePadding="12dp"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
