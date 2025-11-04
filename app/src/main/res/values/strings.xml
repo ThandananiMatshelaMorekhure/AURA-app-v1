@@ -26,7 +26,7 @@
     <string name="articles_subtitle">Health insights &amp;\ntips</string>
 
     <string name="analysis">Analysis</string>
-    <string name="analysis_subtitle">Cycle patterns &amp;\ntrends</string>
+    <string name="analysis_subtitle" translatable="false">Cycle patterns &amp;\ntrends</string>
 
     <string name="settings">Settings</string>
     <string name="settings_subtitle">Preferences &amp;\naccount</string>
@@ -116,6 +116,21 @@
 
     <string name="footer_tagline">Track • Predict • Thrive</string>
 
-    <string name="web_client_id">1019583454807-j8gla40o8r3a9t4phgtlu5pdt895at8p.apps.googleusercontent.com</string>
+    <string name="web_client_id" translatable="false">1019583454807-j8gla40o8r3a9t4phgtlu5pdt895at8p.apps.googleusercontent.com</string>
+    <string name="account_settings">Account settings</string>
+    <string name="change_password">Change password</string>
+    <string name="language">language</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="notification">Notification</string>
+    <string name="privacy_policy">privacy</string>
+    <string name="about_us">About us</string>
+    <string name="language_settings">language</string>
+    <string name="select_language">select languge</string>
+    <string name="app_restart_message">app restart message</string>
+    <string name="english">english</string>
+    <string name="afrikaans">Afrikaans</string>
+    <string name="zulu">isiZulu</string>
+    <string name="xhosa">isiXhosa</string>
+    <string name="subtitle">subtitle</string>
 
 </resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aura</string>
+
+    <!-- Settings Page -->
+    <string name="settings">Instellings</string>
+    <string name="account_settings">Rekeninginstellings</string>
+    <string name="change_password">Verander Wagwoord</string>
+    <string name="language">Taal</string>
+    <string name="edit_profile">Redigeer Profiel</string>
+    <string name="notification">Kennisgewing</string>
+    <string name="privacy_policy">Privaatheidsbeleid</string>
+    <string name="about_us">Oor Ons</string>
+
+    <!-- Language Settings Page -->
+    <string name="language_settings">Taalinstellings</string>
+    <string name="select_language">Kies Taal</string>
+    <string name="app_restart_message">Die program sal herbegin om die nuwe taal toe te pas.</string>
+    <string name="english">Engels</string>
+    <string name="afrikaans">Afrikaans</string>
+    <string name="zulu">isiZulu</string>
+    <string name="xhosa">isiXhosa</string>
+    <string name="welcome_header">Welkom to Aura</string>
+
+
+        <string name="previous_month">Vorige Maand</string>
+        <string name="next_month">Volgende Maand</string>
+        <string name="period_in_days">Periode in %d dae</string>
+        <string name="cycle_signals_message">Vind uit watter seine jou siklus stuur</string>
+        <string name="log_period">Log Periode</string>
+        <string name="sunday_short">S</string>
+        <string name="monday_short">M</string>
+        <string name="tuesday_short">D</string>
+        <string name="wednesday_short">W</string>
+        <string name="thursday_short">D</string>
+        <string name="friday_short">V</string>
+        <string name="saturday_short">S</string>
+        <string name="todo_list">Doenlys</string>
+        <string name="todo_subtitle">Daaglikse take &amp; aanwysings</string>
+        <string name="daily_articles">Daaglikse Artikels</string>
+        <string name="articles_subtitle">Gesondheidsinsigte &amp; leidrade</string>
+    <string name="settings_subtitle">Voorkeure &amp; opsies</string>
+    <string name="date_selected">Gekies: %d</string>
+    <string name="log_period_clicked">Periode gelog</string>
+    <string name="todo_clicked">Doenlys gekliek</string>
+    <string name="articles_clicked">Daaglikse Artikels gekliek</string>
+    <string name="analysis_clicked">Ontleding gekliek</string>
+    <string name="settings_clicked">Instellings gekliek</string>
+    <string name="section1_content">Ons versamel die volgende tipe data</string>
+    <string name="section2_content">Ons gebruik jou persoonlike data vir</string>
+    <string name="section3_content">Ons handhaaf streng beheer oor</string>
+    <string name="section4_content">Ons implementeer omvattende</string>
+    <string name="section5_content">Jy het omvattende beheer oor</string>
+    <string name="privacy_policy_title">Privaatheidsbeleid</string>
+    <string name="section1_title">1. Tipe data wat ons versamel</string>
+    <string name="section2_title">2. Gebruik van jou persoonlike data</string>
+    <string name="section3_title">3. Openbaarmaking van jou persoonlike data</string>
+    <string name="section4_title">4. Data Sekuriteit</string>
+    <string name="section5_title">5. Jou Regte</string>
+    <string name="last_updated">Laas opgedateer: September 2025</string>
+    <string name="privacy_contact_email">privacy@menstrualcycleapp.co</string>
+    <string name="support_contact_email">support@menstrualcycleapp.co</string>
+
+
+    <string name="welcome_subheader">Laat ons jou siklus monitor opstel</string>
+    <string name="setup_header">Basiese Opset</string>
+    <string name="setup_subheader">Ons sal dit gebruik om jou siklus te voorspel</string>
+    <string name="last_period_label">Laaste Periode Begin Datum</string>
+    <string name="last_period_hint">Kies datum</string>
+    <string name="cycle_length_label">Tipiese Siklus Lengte</string>
+    <string name="cycle_length_hint">Kies siklus lengte</string>
+    <string name="period_duration_label">Periode Duur</string>
+    <string name="period_duration_hint">Kies periode duur</string>
+    <string name="notifications_label">Kennisgewings</string>
+    <string name="notifications_hint">Kies kennisgewing voorkeur</string>
+    <string name="btn_skip">Slaan Oor</string>
+    <string name="btn_continue">Gaan Aan</string>
+    <string name="footer_tagline">Monitor • Voorspel • Floreer</string>
+    <string name="analysis">Ontleding</string>
+    <string name="subtitle">Onderskrif</string>
+</resources>

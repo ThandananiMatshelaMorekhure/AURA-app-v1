@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".LanguageApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,10 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AURAAPPMarkUp"
         tools:targetApi="31">
+        <!--
+            LANGUAGE SETTINGS - App language selection
+            Operation: Allow users to change app language (English, Afrikaans, Zulu, Xhosa)
+            Navigation: ← Profile activity → Profile activity (with app restart)
+            Exported: false (accessed from user profile)
+        -->
+        <activity
+            android:name=".LanguageSettings"
+            android:exported="false" />
         <activity
             android:name=".EditProfile"
             android:exported="false" />
-
         <!--
             LAUNCHER ACTIVITY - First screen when app opens
             Operation: User authentication - handles login with email/password
@@ -151,11 +160,10 @@
         <activity
             android:name=".ToDoList"
             android:exported="false" />
-
-
         <activity
             android:name=".AboutUs"
             android:exported="false" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

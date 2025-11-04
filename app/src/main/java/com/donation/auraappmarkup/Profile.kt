@@ -85,13 +85,11 @@ class Profile : AppCompatActivity() {
             navigateToAboutUs()
         }
 
-        // Language option - using LinearLayout ID (commented out for now)
-        /*
+        // Language option - using LinearLayout ID (NOW ACTIVE!)
         val languageOption = findViewById<LinearLayout>(R.id.language)
         languageOption?.setOnClickListener {
             navigateToLanguageSettings()
         }
-        */
     }
 
     private fun navigateToDashboard() {
@@ -148,9 +146,9 @@ class Profile : AppCompatActivity() {
     }
 
     private fun navigateToLanguageSettings() {
-        // Navigate to Language settings activity or show dialog
-        // val intent = Intent(this, LanguageSettings::class.java)
-        // startActivity(intent)
+        // Navigate to Language settings activity
+        val intent = Intent(this, LanguageSettings::class.java)
+        startActivity(intent)
         // Don't finish() so user can come back to profile
     }
 
