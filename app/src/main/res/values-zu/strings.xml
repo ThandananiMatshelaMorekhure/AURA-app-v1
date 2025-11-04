@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aura</string>
+
+    <!-- Settings Page -->
+    <string name="settings">Izilungiselelo</string>
+    <string name="account_settings">Izilungiselelo Ze-akhawunti</string>
+    <string name="change_password">Shintsha Iphasiwedi</string>
+    <string name="language">Ulimi</string>
+    <string name="edit_profile">Hlela Iphrofayela</string>
+    <string name="notification">Isaziso</string>
+    <string name="privacy_policy">Inqubomgomo Yobumfihlo</string>
+    <string name="about_us">Mayelana Nathi</string>
+
+    <!-- Language Settings Page -->
+    <string name="language_settings">Izilungiselelo Zolimi</string>
+    <string name="select_language">Khetha Ulimi</string>
+    <string name="app_restart_message">Uhlelo lokusebenza luzophinde luqale ukuze lusebenzise ulimi olusha.</string>
+    <string name="english">IsiNgisi</string>
+    <string name="afrikaans">Afrikaans</string>
+    <string name="zulu">isiZulu</string>
+    <string name="xhosa">isiXhosa</string>
+    <string name="previous_month">Inyanga edlule</string>
+    <string name="next_month">Inyanga ezayo</string>
+    <string name="period_in_days">Isikhathi senyanga ezinsukwini ezi-%d</string>
+    <string name="cycle_signals_message">Thola ukuthi iziphi izimpawu zesikhathi sakho senyanga</string>
+    <string name="log_period">Layisha isikhathi senyanga</string>
+    <string name="sunday_short">S</string>
+    <string name="monday_short">M</string>
+    <string name="tuesday_short">T</string>
+    <string name="wednesday_short">W</string>
+    <string name="thursday_short">T</string>
+    <string name="friday_short">F</string>
+    <string name="saturday_short">S</string>
+    <string name="todo_list">Uhlu Lwezinto Ozofuna Ukuzenza</string>
+    <string name="todo_subtitle">Imisebenzi yansuku zonke &amp; izinkomba</string>
+    <string name="daily_articles">Izindatshana Zansuku Zonke</string>
+    <string name="articles_subtitle">Ukuqonda kwezempilo &amp; izinkomba</string>
+    <string name="settings_subtitle">Okuthandwayo &amp; izinketho</string>
+    <string name="date_selected">Kukhethiwe: %d</string>
+    <string name="log_period_clicked">Isikhathi senyanga siconywe</string>
+    <string name="todo_clicked">Uhlu lwezinto ozofuna ukuzenza luconywe</string>
+    <string name="articles_clicked">Izindatshana zansuku zonke ziconywe</string>
+    <string name="analysis_clicked">Ukuhlaziywa kuconywe</string>
+    <string name="settings_clicked">Izilungiselelo ziconywe</string>
+    <string name="section1_content">Sibamba izinhlobo zolwazi ezilandelayo</string>
+    <string name="section2_content">Sisebenzisa idatha yakho yangasese ukuze</string>
+    <string name="section3_content">Sibamba ukulawula okuqinile ngaphezulu</string>
+    <string name="section4_content">Sisebenzisa izindlela eziphelele zokuvikela</string>
+    <string name="section5_content">Unamalungelo aphelele okulawula</string>
+    <string name="privacy_policy_title">Inqubomgomo Yobumfihlo</string>
+    <string name="section1_title">1. Izinhlobo zedatha esizibambayo</string>
+    <string name="section2_title">2. Ukusetshenziswa kwedatha yakho yangasese</string>
+    <string name="section3_title">3. Ukudalulwa kwedatha yakho yangasese</string>
+    <string name="section4_title">4. Uvikeleko Lwedatha</string>
+    <string name="section5_title">5. Amalungelo Akho</string>
+    <string name="last_updated">Kubuyekezwe kokugcina: Septhemba 2025</string>
+    <string name="privacy_contact_email">privacy@menstrualcycleapp.co.za</string>
+    <string name="support_contact_email">support@menstrualcycleapp.co.za</string>
+
+    <string name="welcome_header">Uyemukelwa ku-Aura</string>
+    <string name="welcome_subheader">Asimisele isilinganisi sesikhathi sakho senyanga</string>
+    <string name="setup_header">Ukusetha Okuyisisekelo</string>
+    <string name="setup_subheader">Sizokusebenzisa lokhu ukubikezela isikhathi sakho senyanga</string>
+    <string name="last_period_label">Usuku Lokuqala Lesikhathi Sokugcina</string>
+    <string name="last_period_hint">Khetha usuku</string>
+    <string name="cycle_length_label">Ubude Besikhathi Senkathi</string>
+    <string name="cycle_length_hint">Khetha ubude besikhathi senkathi</string>
+    <string name="period_duration_label">Isikhathi Senkathi</string>
+    <string name="period_duration_hint">Khetha isikhathi senkathi</string>
+    <string name="notifications_label">Izaziso</string>
+    <string name="notifications_hint">Khetha okuthandwayo kwezaziso</string>
+    <string name="btn_skip">Yeqa</string>
+    <string name="btn_continue">Qhubeka</string>
+    <string name="footer_tagline">Landelela • Bikezela • Chuma</string>
+    <string name="analysis">Ukuhlaziywa</string>
+    <string name="subtitle">Izincazelo</string>
+</resources>
