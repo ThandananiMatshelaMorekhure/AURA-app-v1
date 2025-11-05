@@ -78,4 +78,42 @@
     <string name="footer_tagline">Monitor • Voorspel • Floreer</string>
     <string name="analysis">Ontleding</string>
     <string name="subtitle">Onderskrif</string>
+    <string name="Settings">Instellings</string>
+    <string name="your_mood">Jou Humeur</string>
+    <string name="add_symptoms">Voeg Simptome By</string>
+    <string name="sad">Hartseer</string>
+    <string name="badmood">Slegte Humeur</string>
+    <string name="happy">Gelukkig</string>
+    <string name="quick_access">Vinnige Toegang</string>
+    <string name="to_do_list">Doenlys</string>
+    <string name="articles">Artikels</string>
+    <string name="profile">Profiel</string>
+    <string name="logout">Teken Uit</string>
+    <string name="period">Periode</string>
+    <string name="day_10">Dag 10</string>
+    <string name="possible_pregnancy">Moontlike Swangerskap</string>
+    <string name="pregnancy_probability">0.0%</string>
+
+    <string name="calendar_august_2025">📅 Augustus 2025</string>
+    <string name="track_todays_symptoms">Volg Vandag se Simptome</string>
+    <string name="view_history">Bekyk Geskiedenis</string>
+
+
+    <string name="what_is_aura">Wat Is AURA?</string>
+    <string name="woman_illustration">Vrou illustrasie</string>
+    <string name="our_mission">Ons Missie</string>
+    <string name="mission_description">AURA is jou betroubare metgesel om jou menstruele siklus te verstaan en te bestuur. Ons glo elke vrou verdien toegang tot akkurate, gepersonaliseerde gesondheidsinsigte wat ingeligte besluite oor hul liggaam en welstand bemagtig.</string>
+    <string name="what_we_offer">Wat Ons Aanbied</string>
+    <string name="feature_1">Akkurate siklus voorspellings en vrugbaarheid opvolging</string>
+    <string name="feature_2">Simptoom opvolging vir bui, energie, en fisiese welstand</string>
+    <string name="feature_3">Opvoedkundige artikels oor vroue gesondheid en reproduktiewe welstand</string>
+    <string name="feature_4">Privaatheid-gefokusde data stoor en gepersonaliseerde insigte</string>
+    <string name="your_privacy_matters">Jou Privaatheid Is Belangrik</string>
+    <string name="privacy_description">Ons neem jou privaatheid ernstig op. Jou persoonlike gesondheidsdata word geënkripteer en nooit met derdes gedeel nie. Jy behou volledige beheer oor jou inligting te alle tye.</string>
+    <string name="join_our_community">Sluit Aan By Ons Gemeenskap</string>
+    <string name="community_description">Sluit aan by duisende vroue wat AURA vertrou om hul te help om hul liggame beter te verstaan. Saam skep ons \'n ondersteunende ruimte vir vroue gesondheidsbewustheid en bemagtiging.</string>
+    <string name="get_in_touch">Kontak Ons</string>
+    <string name="contact_description">Het jy vrae of terugvoer? Ons sal graag van jou hoor!</string>
+    <string name="support_email">📧 support@auraapp.com</string>
+    <string name="website">🌐 www.auraapp.com</string>
 </resources>

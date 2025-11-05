@@ -75,4 +75,46 @@
     <string name="footer_tagline">Landelela • Bikezela • Chuma</string>
     <string name="analysis">Ukuhlaziywa</string>
     <string name="subtitle">Izincazelo</string>
+
+    <string name="Settings">Izilungislelo</string>
+
+    <string name="your_mood">Umoya Wakho</string>
+    <string name="add_symptoms">Ngeza Izimpawu</string>
+    <string name="sad">Kadelela</string>
+    <string name="badmood">Umubi Umoya</string>
+    <string name="happy">Njabulo</string>
+    <string name="quick_access">Ukufinyelela Ngokushesha</string>
+    <string name="to_do_list">Uhlu Lwezinto Ozofuna Ukuzenza</string>
+    <string name="articles">Izindatshana</string>
+
+
+    <string name="profile">Iphrofayili</string>
+    <string name="logout">Phuma</string>
+    <string name="period">Isikhathi Senyanga</string>
+    <string name="day_10">Usuku 10</string>
+    <string name="possible_pregnancy">Ukuthwala Okungenzeka</string>
+    <string name="pregnancy_probability">0.0%</string>
+
+    <string name="calendar_august_2025">📅 Agasti 2025</string>
+    <string name="track_todays_symptoms">Landela Izimpawu Zanamuhla</string>
+    <string name="view_history">Buka Umlando</string>
+
+
+    <string name="what_is_aura">Iyini i-AURA?</string>
+    <string name="woman_illustration">Umfanekiso wesifazane</string>
+    <string name="our_mission">Umphakathi Wethu</string>
+    <string name="mission_description">I-AURA iyisihlobo esithembekile sokuqonda nokulawula isikhathi sakho senyanga. Sikholelwa ukuthi wonke owesifazane ufanele ukuthola ukufinyelela olunembile, okutholakalayo kokuzithola kwezempilo okunika amandla izinqumo ezinolwazi ngomzimba wakhe nempilo yakhe.</string>
+    <string name="what_we_offer">Esikunikezayo</string>
+    <string name="feature_1">Ukubikezela okunembile kwenkathi nokulandela ukuzala</string>
+    <string name="feature_2">Ukulandela izimpawu zemizwa, amandla, nempilo yomzimba</string>
+    <string name="feature_3">Izindatshana zemfundo ngezempilo yabesifazane nempilo yokuzala</string>
+    <string name="feature_4">Ukugcinwa kwedatha okugxile ekufihleni nokuqondiswa komzimba</string>
+    <string name="your_privacy_matters">Ubumfihlo Bakho Buyabalulekile</string>
+    <string name="privacy_description">Sithatha ubumfihlo bakho ngokuginisekile. Idatha yakho yezempilo iyafihlwa futhi ayikaze yabelwane nabanye. Ugcina ukulawula okuphelele ngolwazi lwakho ngaso sonke isikhathi.</string>
+    <string name="join_our_community">Joyina Umphakathi Wethu</string>
+    <string name="community_description">Joyina izinkulungwane zabesifazane abathembela ku-AURA ukuthi ibasize baqonde imizimba yabo kangcono. Sondle, sakha indawo esekelayo yokwaziswa kwezempilo yabesifazane nokunikwa amandla.</string>
+    <string name="get_in_touch">Xhumana Nathi</string>
+    <string name="contact_description">Unemibuzo noma impendulo? Singathanda ukuzwa kuwe!</string>
+    <string name="support_email">📧 support@auraapp.com</string>
+    <string name="website">🌐 www.auraapp.com</string>
 </resources>

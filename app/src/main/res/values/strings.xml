@@ -118,6 +118,7 @@
 
     <string name="web_client_id" translatable="false">1019583454807-j8gla40o8r3a9t4phgtlu5pdt895at8p.apps.googleusercontent.com</string>
     <string name="account_settings">Account settings</string>
+
     <string name="change_password">Change password</string>
     <string name="language">language</string>
     <string name="edit_profile">Edit profile</string>
@@ -125,12 +126,49 @@
     <string name="privacy_policy">privacy</string>
     <string name="about_us">About us</string>
     <string name="language_settings">language</string>
-    <string name="select_language">select languge</string>
+    <string name="select_language">select language</string>
     <string name="app_restart_message">app restart message</string>
     <string name="english">english</string>
     <string name="afrikaans">Afrikaans</string>
     <string name="zulu">isiZulu</string>
     <string name="xhosa">isiXhosa</string>
     <string name="subtitle">subtitle</string>
+    <string name="Settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="heart_shape" translatable="false">Heart shape</string>
+    <string name="period">Period:</string>
+    <string name="day_10">Day 10</string>
+    <string name="possible_pregnancy">Possible Pregnancy:</string>
+    <string name="august_2025" translatable="false">📅 August 2025</string>
+    <string name="your_mood">Your Mood</string>
+    <string name="add_symptoms">Add Symptoms</string>
+    <string name="sad">Sad</string>
+    <string name="badmood">Badmood</string>
+    <string name="happy">Happy</string>
+    <string name="quick_access">Quick Access</string>
+    <string name="to_do_list">To-Do List</string>
+    <string name="articles">Articles</string>
+    <string name="track_todays_symptoms">Track Today\'s Symptoms</string>
+    <string name="view_history">View History</string>
+    <string name="pregnancy_probability">0.0%</string>
+    <string name="calendar_august_2025">August 2025</string>
 
+    <string name="what_is_aura">What Is AURA?</string>
+    <string name="woman_illustration">Woman illustration</string>
+    <string name="our_mission">Our Mission</string>
+    <string name="mission_description">AURA is your trusted companion for understanding and managing your menstrual cycle. We believe every woman deserves access to accurate, personalized health insights that empower informed decisions about their body and wellbeing.</string>
+    <string name="what_we_offer">What We Offer</string>
+    <string name="feature_1">Accurate cycle predictions and fertility tracking</string>
+    <string name="feature_2">Symptom tracking for mood, energy, and physical wellness</string>
+    <string name="feature_3">Educational articles on women\'s health and reproductive wellness</string>
+    <string name="feature_4">Privacy-focused data storage and personalized insights</string>
+    <string name="your_privacy_matters">Your Privacy Matters</string>
+    <string name="privacy_description">We take your privacy seriously. Your personal health data is encrypted and never shared with third parties. You maintain complete control over your information at all times.</string>
+    <string name="join_our_community">Join Our Community</string>
+    <string name="community_description">Join thousands of women who trust AURA to help them understand their bodies better. Together, we\'re creating a supportive space for women\'s health awareness and empowerment.</string>
+    <string name="get_in_touch">Get In Touch</string>
+    <string name="contact_description">Have questions or feedback? We\'d love to hear from you!</string>
+    <string name="support_email">📧 support@auraapp.com</string>
+    <string name="website">🌐 www.auraapp.com</string>
 </resources>

@@ -41,8 +41,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Welcome"
-                        android:textSize="16sp"
+                        android:text="@string/welcome_header"
+                        android:textSize="25sp"
                         android:textColor="@color/white"
                         android:fontFamily="sans-serif" />
 
@@ -62,7 +62,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/ic_person"
-                    android:contentDescription="Profile"
+                    android:contentDescription="@string/profile"
                     android:elevation="2dp"
                     android:textSize="20sp" />
 
@@ -71,7 +71,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/ic_logout"
-                    android:contentDescription="Logout"
+                    android:contentDescription="@string/logout"
                     android:textSize="20sp"
                     android:elevation="2dp" />
 
@@ -105,7 +105,7 @@
                             android:layout_height="match_parent"
                             android:src="@drawable/heart_shape"
                             android:scaleType="fitXY"
-                            android:contentDescription="Heart shape" />
+                            android:contentDescription="@string/heart_shape" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Period:"
+                                android:text="@string/period"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
                                 android:fontFamily="sans-serif" />
@@ -126,7 +126,7 @@
                                 android:id="@+id/currentCycleDay"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Day 10"
+                                android:text="@string/day_10"
                                 android:textColor="@color/white"
                                 android:textSize="32sp"
                                 android:textStyle="bold"
@@ -135,7 +135,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Possible Pregnancy:"
+                                android:text="@string/possible_pregnancy"
                                 android:textColor="@color/white"
                                 android:textSize="12sp"
                                 android:fontFamily="sans-serif"
@@ -180,7 +180,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="📅 August 2025"
+                            android:text="@string/august_2025"
                             android:textSize="16sp"
                             android:textColor="@color/black"
                             android:fontFamily="sans-serif-medium" />
@@ -372,7 +372,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Your Mood"
+                    android:text="@string/your_mood"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -413,7 +413,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Add Symptoms"
+                                android:text="@string/add_symptoms"
                                 android:textSize="10sp"
                                 android:textColor="@color/aura_primary"
                                 android:fontFamily="sans-serif"
@@ -446,7 +446,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Sad"
+                                android:text="@string/sad"
                                 android:textSize="10sp"
                                 android:textColor="@color/black"
                                 android:fontFamily="sans-serif" />
@@ -478,7 +478,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Badmood"
+                                android:text="@string/badmood"
                                 android:textSize="10sp"
                                 android:textColor="@color/black"
                                 android:fontFamily="sans-serif" />
@@ -509,7 +509,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Happy"
+                                android:text="@string/happy"
                                 android:textSize="10sp"
                                 android:textColor="@color/black"
                                 android:fontFamily="sans-serif" />
@@ -528,7 +528,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quick Access"
+                    android:text="@string/quick_access"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -573,7 +573,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="To-Do List"
+                                android:text="@string/to_do_list"
                                 android:textSize="14sp"
                                 android:textColor="@color/white"
                                 android:fontFamily="sans-serif-medium"
@@ -610,7 +610,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Articles"
+                                android:text="@string/articles"
                                 android:textSize="14sp"
                                 android:textColor="@color/white"
                                 android:fontFamily="sans-serif-medium"
@@ -650,13 +650,13 @@
                     android:id="@+id/trackSymptomsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Track Today's Symptoms" />
+                    android:text="@string/track_todays_symptoms" />
 
                 <Button
                     android:id="@+id/viewHistoryButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="View History" />
+                    android:text="@string/view_history" />
             </LinearLayout>
 
         </LinearLayout>

@@ -75,7 +75,16 @@ class TaskAdapter(
                 onTaskLongClick(task)
                 true
             }
-            cbCompleted.setOnCheckedChangeListener { _, _ -> onTaskToggle(task) }
+
+            // Fix for checkbox - remove previous listeners to avoid multiple calls
+            cbCompleted.setOnCheckedChangeListener(null)
+            cbCompleted.isChecked = task.isCompleted
+            cbCompleted.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked != task.isCompleted) {
+                    onTaskToggle(task)
+                }
+            }
+
             btnDelete.setOnClickListener { onDeleteClick(task) }
         }
     }

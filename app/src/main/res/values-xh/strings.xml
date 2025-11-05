@@ -7,7 +7,7 @@
     <string name="account_settings">Iisetingi Ze-akhawunti</string>
     <string name="change_password">Tshintsha Iphasiwedi</string>
     <string name="language">Ulwimi</string>
-    <string name="edit_profile">Hlela Iprofayile</string>
+
     <string name="notification">Isaziso</string>
     <string name="privacy_policy">Umgaqo-nkqubo Wabucala</string>
     <string name="about_us">Malunga Nathi</string>
@@ -77,5 +77,45 @@
     <string name="analysis">Uhlalutyo</string>
     <string name="subtitle">Iinkcukacha</string>
 
+    <string name="Settings">Iisetingi</string>
+    <string name="your_mood">Imo Yakho</string>
+    <string name="add_symptoms">Yongeza Iimpawu</string>
+    <string name="sad">Kadelela</string>
+    <string name="badmood">Imo Engalunganga</string>
+    <string name="happy">Uyavuya</string>
+    <string name="quick_access">Ukufikelela Ngokukhawuleza</string>
+    <string name="to_do_list">Uluhlu Lwezinto Zokwenza</string>
+    <string name="articles">Iincwadi</string>
+
+
+    <string name="profile">Iprofayile</string>
+    <string name="logout">Phuma</string>
+    <string name="period">Ixesha Lenkqubo</string>
+    <string name="day_10">Usuku 10</string>
+    <string name="possible_pregnancy">Ukuba Khona Lomsesane</string>
+    <string name="pregnancy_probability">0.0%</string>
+    <string name="edit_profile">Lungisa iprofayile</string>
+    <string name="calendar_august_2025">📅 Agasti 2025</string>
+    <string name="track_todays_symptoms">Landela Iimpawu Zanamhlanje</string>
+    <string name="view_history">Jonga Imbali</string>
+
+
+    <string name="what_is_aura">Yintoni i-AURA?</string>
+    <string name="woman_illustration">Umfanekiso womntu</string>
+    <string name="our_mission">Injongo Yethu</string>
+    <string name="mission_description">I-AURA yilungu elithembekileyo lokukuqonda nokulawula ixesha lakho lenyanga. Sikholelwa ukuba wonke umntu ofazwe ufanele ukuba afikelele kulwazi oluchanekileyo, oluthi lwazise izigqibo ezinolwazi ngomzimba wakhe nempilo yakhe.</string>
+    <string name="what_we_offer">Osi Nikayo</string>
+    <string name="feature_1">Ukuqikelela kwexesha lenkqubo nokulandela ukuba khona kwesisu</string>
+    <string name="feature_2">Ukulandela iimpawu zemeko yengqondo, amandla, nempilo yomzimba</string>
+    <string name="feature_3">Iincwadi zemfundo ngezempilo yabafazi nempilo yokuzala</string>
+    <string name="feature_4">Ugciniso lwedatha olugxile kubucala neengcamango ezicwangcisiweyo</string>
+    <string name="your_privacy_matters">Ubucala Bakho Bubalulekile</string>
+    <string name="privacy_description">Sithatha ubucala bakho ngokuginisekileyo. Idatha yakho yezempilo iyafihlwa kwaye ayisoloko yabelwana ngabathathu. Ugcina ulawulo olupheleleyo ngolwazi lwakho ngaso sonke isihlandlo.</string>
+    <string name="join_our_community">Joyina Uluntu Lwethu</string>
+    <string name="community_description">Joyina abawaka abafazi abathembela ku-AURA ukuba ibancede baziqonde imizimba yabo kangcono. Kunye, senza indawo exhasayo yokuqwashisa ngezempilo zabafazi nokomeleza.</string>
+    <string name="get_in_touch">Nxibelelane Nathi</string>
+    <string name="contact_description">Unemibuzo okanye ingxelo? Singathanda ukuva kuwe!</string>
+    <string name="support_email">📧 support@auraapp.com</string>
+    <string name="website">🌐 www.auraapp.com</string>
 
 </resources>

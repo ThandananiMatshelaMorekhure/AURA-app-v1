@@ -6,12 +6,11 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.RadioGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.util.Locale
 
-class LanguageSettings : AppCompatActivity() {
+class LanguageSettings : BaseActivity() {
 
     private lateinit var radioGroup: RadioGroup
     private lateinit var sharedPreferences: android.content.SharedPreferences
