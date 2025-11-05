@@ -4,11 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class Profile : BaseActivity() {
+    private val auth by lazy { Firebase.auth }
+    private val firestore by lazy { Firebase.firestore }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -19,11 +27,38 @@ class Profile : BaseActivity() {
             insets
         }
 
+        // Load user data from Firestore
+        loadUserData()
+
         // Set up navigation button click listeners
         setupNavigationButtons()
 
         // Set up profile option click listeners
         setupProfileOptions()
+    }
+
+    private fun loadUserData() {
+        val userId = auth.currentUser?.uid
+        if (userId == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
+        firestore.collection("users").document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val userName = document.getString("name") ?: "User"
+                    val userEmail = document.getString("email") ?: auth.currentUser?.email ?: ""
+
+                    // Update UI with user data
+                    findViewById<TextView>(R.id.tvUserName).text = userName
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error loading profile data", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun setupNavigationButtons() {

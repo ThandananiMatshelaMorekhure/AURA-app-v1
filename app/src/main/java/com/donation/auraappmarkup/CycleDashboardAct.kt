@@ -3,7 +3,6 @@ package com.donation.auraappmarkup
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.donation.auraappmarkup.data.AppDatabase
 import com.donation.auraappmarkup.databinding.ActivityCycleDashboardBinding
@@ -33,6 +32,48 @@ class CycleDashboardAct : BaseActivity() {
         setupNavigation()
         setupBottomNavigation()
         setupButtonClicks()
+        loadUserName() // Load user name immediately
+    }
+
+    private fun loadUserName() {
+        val userId = auth.currentUser?.uid
+        if (userId == null) {
+            binding.welcomeText.text = "User" // Default fallback
+            return
+        }
+
+        // Try to get user name from Firestore
+        firestore.collection("users").document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val userName = document.getString("name") ?: "User"
+                    binding.welcomeText.text = userName
+                } else {
+                    // If no user document exists, create one with default name
+                    createUserDocument(userId)
+                }
+            }
+            .addOnFailureListener { e ->
+                binding.welcomeText.text = "User" // Fallback
+            }
+    }
+
+    private fun createUserDocument(userId: String) {
+        val userData = hashMapOf(
+            "name" to "User", // Default name
+            "email" to (auth.currentUser?.email ?: ""),
+            "createdAt" to System.currentTimeMillis()
+        )
+
+        firestore.collection("users").document(userId)
+            .set(userData)
+            .addOnSuccessListener {
+                binding.welcomeText.text = "User"
+            }
+            .addOnFailureListener { e ->
+                binding.welcomeText.text = "User"
+            }
     }
 
     private fun setupButtonClicks() {
@@ -104,18 +145,7 @@ class CycleDashboardAct : BaseActivity() {
             val predictions = calculatePredictions(prefs)
 
             binding.apply {
-                // Get user name from Firestore if available
-                val userId = auth.currentUser?.uid
-                if (userId != null) {
-                    firestore.collection("users").document(userId)
-                        .get()
-                        .addOnSuccessListener { document ->
-                            if (document.exists()) {
-                                val userName = document.getString("name") ?: "User"
-                                welcomeText.text = userName
-                            }
-                        }
-                }
+                // User name is already loaded in loadUserName()
 
                 // Current Cycle Card - Update cycle day
                 currentCycleDay.text = "Day ${predictions.currentDay}"
