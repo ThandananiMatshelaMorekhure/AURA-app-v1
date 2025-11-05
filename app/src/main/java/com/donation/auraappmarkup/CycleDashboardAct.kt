@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-class CycleDashboardAct : AppCompatActivity() {
+class CycleDashboardAct : BaseActivity() {
     private lateinit var binding: ActivityCycleDashboardBinding
     private val auth by lazy { Firebase.auth }
     private val firestore by lazy { Firebase.firestore }

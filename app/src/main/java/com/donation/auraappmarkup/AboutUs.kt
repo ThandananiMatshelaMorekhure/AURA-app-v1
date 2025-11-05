@@ -2,32 +2,48 @@ package com.donation.auraappmarkup
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class AboutUs : AppCompatActivity() {
+class AboutUs : BaseActivity() {
+
+    private val TAG = "AboutUs"
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_about_us)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
-        setupToolbarNavigation()
+        try {
+            enableEdgeToEdge()
+            setContentView(R.layout.activity_about_us)
+
+            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                insets
+            }
+
+            setupToolbarNavigation()
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error in onCreate: ${e.message}", e)
+            e.printStackTrace()
+            finish() // Close activity if there's an error
+        }
     }
 
     private fun setupToolbarNavigation() {
-        val toolbar = findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar)
+        try {
+            val toolbar = findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar)
 
-        // Set navigation icon click listener
-        toolbar.setNavigationOnClickListener {
-            returnToProfile()
+            // Set navigation icon click listener
+            toolbar?.setNavigationOnClickListener {
+                returnToProfile()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error setting up toolbar: ${e.message}", e)
         }
     }
 
@@ -36,6 +52,7 @@ class AboutUs : AppCompatActivity() {
     }
 
     // Handle system back button press
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
         finish() // Simply close this activity

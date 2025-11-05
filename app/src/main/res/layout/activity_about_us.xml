@@ -56,17 +56,16 @@
                     android:fontFamily="sans-serif-medium"
                     android:layout_marginBottom="16dp" />
 
-                <!-- Illustration 1 -->
+                <!-- Illustration 1 - FIXED: Changed to ImageView -->
                 <ImageView
                     android:id="@+id/illustrationOne"
-                    android:layout_width="332dp"
+                    android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    android:layout_gravity="end"
                     android:layout_marginBottom="16dp"
+                    android:src="@drawable/women_p"
+                    android:scaleType="centerCrop"
                     android:adjustViewBounds="true"
-                    android:contentDescription="Woman illustration"
-                    android:scaleType="fitCenter"
-                 />
+                    android:contentDescription="@string/woman_illustration" />
 
                 <!-- Mission Section -->
                 <TextView
@@ -199,20 +198,18 @@
                         android:lineSpacingExtra="2dp" />
                 </LinearLayout>
 
-                <!-- Illustration 2 -->
-
-                <!-- Privacy Section -->
+                <!-- Illustration 2 - FIXED: Changed to ImageView -->
                 <ImageView
                     android:id="@+id/illustrationTwo"
-                    android:layout_width="334dp"
+                    android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    android:layout_gravity="start"
                     android:layout_marginBottom="16dp"
+                    android:src="@drawable/diverse_women_group"
+                    android:scaleType="centerCrop"
                     android:adjustViewBounds="true"
-                    android:contentDescription="Woman illustration"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/illustration_woman_2" />
+                    android:contentDescription="@string/woman_illustration" />
 
+                <!-- Privacy Section -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

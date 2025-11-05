@@ -23,19 +23,9 @@ class LanguageApplication : Application() {
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
 
-        val config = Configuration()
+        val config = Configuration(resources.configuration)
         config.setLocale(locale)
 
         resources.updateConfiguration(config, resources.displayMetrics)
-    }
-
-    override fun attachBaseContext(base: Context) {
-        val sharedPreferences = base.getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
-        val languageCode = sharedPreferences.getString("app_language", "en") ?: "en"
-        val locale = Locale(languageCode)
-        val config = Configuration(base.resources.configuration)
-        config.setLocale(locale)
-        val context = base.createConfigurationContext(config)
-        super.attachBaseContext(context)
     }
 }

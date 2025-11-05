@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class OnBoardingActivity : AppCompatActivity() {
+class OnBoardingActivity : BaseActivity() {
 
     // ✅ Firebase setup
     private val auth by lazy { Firebase.auth }

@@ -3,32 +3,42 @@ package com.donation.auraappmarkup
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.donation.auraappmarkup.databinding.ActivityToDoListBinding
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 
-class ToDoList : AppCompatActivity() {
+class ToDoList : BaseActivity() {
 
     private lateinit var binding: ActivityToDoListBinding
     private lateinit var taskRepository: TaskRepository
     private lateinit var taskAdapter: TaskAdapter
     private var currentFilter = TaskFilter.ALL
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityToDoListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Check if user is authenticated
+        if (auth.currentUser == null) {
+            Toast.makeText(this, "Please sign in to use the todo list", Toast.LENGTH_LONG).show()
+            finish()
+            return
+        }
+
         setupRepository()
         setupRecyclerView()
         setupClickListeners()
         setupFilterButtons()
-        loadTasks()
+        observeTasks()
 
-        // Add some sample data
-        addSampleTasks()
+        // Remove sample tasks since we're using Firebase now
+        // addSampleTasks()
     }
 
     private fun setupRepository() {
@@ -77,7 +87,7 @@ class ToDoList : AppCompatActivity() {
     private fun applyFilter(filter: TaskFilter) {
         currentFilter = filter
         updateFilterButtonsUI(filter)
-        loadTasks()
+        observeTasks()
     }
 
     private fun updateFilterButtonsUI(selectedFilter: TaskFilter) {
@@ -99,9 +109,12 @@ class ToDoList : AppCompatActivity() {
         selectedButton.setTextColor(ContextCompat.getColor(this, R.color.filter_selected_text))
     }
 
-    private fun loadTasks() {
-        val tasks = taskRepository.getTasksByFilter(currentFilter)
-        taskAdapter.updateTasks(tasks)
+    private fun observeTasks() {
+        lifecycleScope.launch {
+            taskRepository.getTasksByFilter(currentFilter).collect { tasks ->
+                taskAdapter.updateTasks(tasks)
+            }
+        }
     }
 
     private fun showAddTaskDialog() {
@@ -111,9 +124,14 @@ class ToDoList : AppCompatActivity() {
     }
 
     private fun addTask(task: Task) {
-        taskRepository.addTask(task)
-        loadTasks()
-        Toast.makeText(this, "Task added successfully", Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            try {
+                taskRepository.addTask(task)
+                Toast.makeText(this@ToDoList, "Task added successfully", Toast.LENGTH_SHORT).show()
+            } catch (e: Exception) {
+                Toast.makeText(this@ToDoList, "Failed to add task: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun editTask(task: Task) {
@@ -123,17 +141,18 @@ class ToDoList : AppCompatActivity() {
     }
 
     private fun updateTask(task: Task) {
-        if (taskRepository.updateTask(task)) {
-            loadTasks()
-            Toast.makeText(this, "Task updated successfully", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "Failed to update task", Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            if (taskRepository.updateTask(task)) {
+                Toast.makeText(this@ToDoList, "Task updated successfully", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this@ToDoList, "Failed to update task", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     private fun toggleTaskCompletion(task: Task) {
-        if (taskRepository.toggleTaskCompletion(task.id)) {
-            loadTasks()
+        lifecycleScope.launch {
+            taskRepository.toggleTaskCompletion(task.id)
         }
     }
 
@@ -142,11 +161,12 @@ class ToDoList : AppCompatActivity() {
             .setTitle("Delete Task")
             .setMessage("Are you sure you want to delete '${task.title}'?")
             .setPositiveButton("Delete") { _, _ ->
-                if (taskRepository.deleteTask(task.id)) {
-                    loadTasks()
-                    Toast.makeText(this, "Task deleted", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Failed to delete task", Toast.LENGTH_SHORT).show()
+                lifecycleScope.launch {
+                    if (taskRepository.deleteTask(task.id)) {
+                        Toast.makeText(this@ToDoList, "Task deleted", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@ToDoList, "Failed to delete task", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
             .setNegativeButton("Cancel", null)
@@ -165,49 +185,5 @@ class ToDoList : AppCompatActivity() {
                 }
             }
             .show()
-    }
-
-    private fun addSampleTasks() {
-        val sampleTasks = listOf(
-            Task(
-                title = "Track period symptoms",
-                description = "Log flow, cramps, and energy levels in app",
-                priority = TaskPriority.HIGH,
-                dueDate = "25/05/2024"
-            ),
-            Task(
-                title = "Restock menstrual supplies",
-                description = "Buy pads, tampons, or menstrual cup",
-                priority = TaskPriority.MEDIUM,
-                dueDate = "26/05/2024"
-            ),
-            Task(
-                title = "Schedule gynecologist appointment",
-                description = "Annual checkup and pap smear",
-                priority = TaskPriority.HIGH,
-                dueDate = "27/05/2024"
-            ),
-            Task(
-                title = "Prepare heating pad and comfort items",
-                description = "Have pain relief ready for next cycle",
-                priority = TaskPriority.MEDIUM
-            ),
-            Task(
-                title = "Take iron supplement",
-                description = "Daily vitamin during and after period",
-                priority = TaskPriority.MEDIUM
-            ),
-            Task(
-                title = "Gentle yoga session",
-                description = "20-minute flow for cramp relief",
-                priority = TaskPriority.LOW,
-                isCompleted = true
-            )
-        )
-
-        sampleTasks.forEach { task ->
-            taskRepository.addTask(task)
-        }
-        loadTasks()
     }
 }

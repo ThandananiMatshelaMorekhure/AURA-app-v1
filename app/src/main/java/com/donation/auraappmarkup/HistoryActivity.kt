@@ -4,20 +4,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.donation.auraappmarkup.databinding.ActivityHistoryBinding
-import java.text.SimpleDateFormat
-import java.util.*
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 
-class HistoryActivity : AppCompatActivity() {
+class HistoryActivity : BaseActivity() {
     private lateinit var binding: ActivityHistoryBinding
-    private val auth by lazy { Firebase.auth }
-    private val fireStore by lazy { Firebase.firestore } // Fixed spelling
-    private val tag = "HistoryActivity" // Fixed: lowercase
+    private lateinit var symptomRepository: SymptomRepository
+    private val auth = FirebaseAuth.getInstance()
+    private val tag = "HistoryActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +22,13 @@ class HistoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         Log.d(tag, "HistoryActivity created")
+        setupRepository()
         setupButtonListeners()
-        loadHistory()
+        observeHistory()
+    }
+
+    private fun setupRepository() {
+        symptomRepository = SymptomRepository()
     }
 
     private fun setupButtonListeners() {
@@ -39,74 +41,16 @@ class HistoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadHistory() {
-        val userId = auth.currentUser?.uid
-        if (userId == null) {
-            Log.e(tag, "User not logged in")
-            Toast.makeText(this, "Please log in to view history", Toast.LENGTH_SHORT).show()
-            finish()
-            return
+    private fun observeHistory() {
+        lifecycleScope.launch {
+            symptomRepository.getSymptomEntriesSorted().collect { entries ->
+                Log.d(tag, "Received ${entries.size} symptom entries")
+                displayHistory(entries)
+            }
         }
-
-        Log.d(tag, "Loading history for user: $userId")
-
-        // FIXED: Query the correct collection path
-        fireStore.collection("symptomEntries")  // Match what SymptomTrackingActivity uses
-            .whereEqualTo("userId", userId)     // Filter by current user
-            .get()
-            .addOnSuccessListener { documents ->
-                Log.d(tag, "Firestore returned ${documents.size()} documents")
-
-                // Debug: Print all documents
-                for (document in documents) {
-                    Log.d(tag, "Document ID: ${document.id}")
-                    Log.d(tag, "Document data: ${document.data}")
-                }
-
-                if (documents.isEmpty) {
-                    Log.d(tag, "No symptom entries found")
-                    displayHistory(emptyList())
-                    return@addOnSuccessListener
-                }
-
-                val entries = documents.mapNotNull { doc ->
-                    try {
-                        HistoryEntry(
-                            date = doc.getString("date") ?: "Unknown Date",
-                            symptoms = doc.get("symptoms") as? List<String> ?: emptyList(),
-                            mood = doc.getString("mood") ?: "Unknown Mood",
-                            flow = doc.getString("flow") ?: "Unknown Flow"
-                        )
-                    } catch (e: Exception) {
-                        Log.e(tag, "Error parsing document ${doc.id}: ${e.message}")
-                        null
-                    }
-                }
-
-                Log.d(tag, "Created ${entries.size} history entries")
-
-                // FIXED: Sort by timestamp instead of parsing date string
-                val sortedEntries = entries.sortedByDescending { entry ->
-                    // Use timestamp if available, otherwise use date string
-                    try {
-                        // Parse the "MMM dd, yyyy" format for sorting
-                        val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
-                        dateFormat.parse(entry.date)?.time ?: 0L
-                    } catch (e: Exception) {
-                        0L
-                    }
-                }
-
-                displayHistory(sortedEntries)
-            }
-            .addOnFailureListener { exception ->
-                Log.e(tag, "Error loading history: ${exception.message}")
-                Toast.makeText(this, "Error loading history: ${exception.message}", Toast.LENGTH_SHORT).show()
-                displayHistory(emptyList())
-            }
     }
 
-    private fun displayHistory(entries: List<HistoryEntry>) {
+    private fun displayHistory(entries: List<SymptomEntry>) {
         Log.d(tag, "Displaying ${entries.size} entries")
 
         if (entries.isEmpty()) {
@@ -117,8 +61,19 @@ class HistoryActivity : AppCompatActivity() {
             binding.emptyStateContainer.visibility = View.GONE
             binding.historyRecyclerView.visibility = View.VISIBLE
 
+            // Convert SymptomEntry to HistoryEntry for the adapter
+            val historyEntries = entries.map { symptomEntry ->
+                HistoryEntry(
+                    date = symptomEntry.date,
+                    symptoms = symptomEntry.symptoms,
+                    mood = symptomEntry.mood,
+                    flow = symptomEntry.flow,
+                    notes = symptomEntry.notes
+                )
+            }
+
             binding.historyRecyclerView.layoutManager = LinearLayoutManager(this)
-            binding.historyRecyclerView.adapter = HistoryAdapter(entries)
+            binding.historyRecyclerView.adapter = HistoryAdapter(historyEntries)
             Log.d(tag, "RecyclerView populated with data")
         }
     }
@@ -127,6 +82,7 @@ class HistoryActivity : AppCompatActivity() {
         val date: String,
         val symptoms: List<String>,
         val mood: String,
-        val flow: String
+        val flow: String,
+        val notes: String = ""
     )
 }

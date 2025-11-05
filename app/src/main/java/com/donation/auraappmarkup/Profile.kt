@@ -4,13 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class Profile : AppCompatActivity() {
+class Profile : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -55,37 +53,37 @@ class Profile : AppCompatActivity() {
     }
 
     private fun setupProfileOptions() {
-        // Change Password option - using LinearLayout ID
+        // Change Password option
         val changePasswordOption = findViewById<LinearLayout>(R.id.change_password)
         changePasswordOption?.setOnClickListener {
             navigateToChangePassword()
         }
 
-        // Edit Profile option - using LinearLayout ID
+        // Edit Profile option
         val editProfileOption = findViewById<LinearLayout>(R.id.edit_profile)
         editProfileOption?.setOnClickListener {
             navigateToEditProfile()
         }
 
-        // Notification option - using LinearLayout ID
+        // Notification option
         val notificationOption = findViewById<LinearLayout>(R.id.notification)
         notificationOption?.setOnClickListener {
             navigateToNotification()
         }
 
-        // Privacy Policy option - using TextView ID
-        val privacyPolicyOption = findViewById<TextView>(R.id.privacy_policy)
+        // Privacy Policy option - NOW CHANGED TO LinearLayout
+        val privacyPolicyOption = findViewById<LinearLayout>(R.id.privacy_policy)
         privacyPolicyOption?.setOnClickListener {
             navigateToPrivacyPolicy()
         }
 
-        // About Us option - using TextView ID
-        val aboutUsOption = findViewById<TextView>(R.id.about_us)
+        // About Us option - NOW CHANGED TO LinearLayout
+        val aboutUsOption = findViewById<LinearLayout>(R.id.about_us)
         aboutUsOption?.setOnClickListener {
             navigateToAboutUs()
         }
 
-        // Language option - using LinearLayout ID (NOW ACTIVE!)
+        // Language option
         val languageOption = findViewById<LinearLayout>(R.id.language)
         languageOption?.setOnClickListener {
             navigateToLanguageSettings()
