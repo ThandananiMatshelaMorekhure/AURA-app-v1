@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
@@ -24,6 +23,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.concurrent.Executor
 
@@ -32,6 +32,7 @@ class LoginActivity : BaseActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    private val firestore by lazy { Firebase.firestore }
 
     companion object {
         private const val TAG = "LoginActivity"
@@ -64,6 +65,10 @@ class LoginActivity : BaseActivity() {
                         .addOnCompleteListener(this) { authTask ->
                             if (authTask.isSuccessful) {
                                 Log.d(TAG, "Firebase authentication successful")
+                                // Create user document for Google sign-in
+                                authTask.result?.user?.let { user ->
+                                    createUserDocument(user.uid, user.email ?: "", user.displayName ?: "User")
+                                }
                                 navigateToMain()
                             } else {
                                 val errorMsg = "Firebase auth failed: ${authTask.exception?.message}"
@@ -177,6 +182,10 @@ class LoginActivity : BaseActivity() {
 
                 if (task.isSuccessful) {
                     Log.d(TAG, "Email login successful")
+                    // Create user document for email login
+                    task.result?.user?.let { user ->
+                        createUserDocument(user.uid, user.email ?: "", "User")
+                    }
                     saveBiometricCredentials(email, password)
                     navigateToMain()
                 } else {
@@ -184,6 +193,23 @@ class LoginActivity : BaseActivity() {
                     Log.e(TAG, errorMsg)
                     showError("Login failed. Check your credentials.")
                 }
+            }
+    }
+
+    private fun createUserDocument(userId: String, email: String, name: String = "User") {
+        val userData = hashMapOf(
+            "name" to name,
+            "email" to email,
+            "createdAt" to System.currentTimeMillis()
+        )
+
+        firestore.collection("users").document(userId)
+            .set(userData)
+            .addOnSuccessListener {
+                Log.d(TAG, "User document created successfully for: $email")
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "Error creating user document: ${e.message}")
             }
     }
 
