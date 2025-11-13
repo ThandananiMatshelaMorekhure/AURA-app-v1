@@ -76,6 +76,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("com.google.firebase:firebase-messaging-ktx")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     // ✅ Room Database
@@ -83,6 +84,9 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
     implementation(libs.androidx.activity)
     ksp("androidx.room:room-compiler:2.6.1")
+
+    // ✅ WorkManager for background sync 🆕
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     // ✅ Retrofit + OkHttp
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

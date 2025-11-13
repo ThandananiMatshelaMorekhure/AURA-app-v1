@@ -2,11 +2,13 @@ package com.donation.auraappmarkup
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.donation.auraappmarkup.data.AppDatabase
 import com.donation.auraappmarkup.databinding.ActivityCycleDashboardBinding
 import com.donation.auraappmarkup.db.UserPreferences
+import com.donation.auraappmarkup.notifications.NotificationHelper
 import com.donation.auraappmarkup.ui.Articles
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
@@ -22,6 +24,7 @@ class CycleDashboardAct : BaseActivity() {
     private val auth by lazy { Firebase.auth }
     private val firestore by lazy { Firebase.firestore }
     private val db by lazy { AppDatabase.getDatabase(this) }
+    private val TAG = "CycleDashboard"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,48 @@ class CycleDashboardAct : BaseActivity() {
         setupBottomNavigation()
         setupButtonClicks()
         loadUserName() // Load user name immediately
+        setupPushNotifications()
+
+    }
+
+    private fun setupPushNotifications() {
+        // Check if permission is granted
+        if (NotificationHelper.hasNotificationPermission(this)) {
+            Log.d(TAG, "Notification permission already granted")
+            initializeNotifications()
+        } else {
+            // Request permission
+            NotificationHelper.requestNotificationPermission(this)
+        }
+    }
+
+    private fun initializeNotifications() {
+        // Get FCM token
+        NotificationHelper.getFCMToken(this) { token ->
+            Log.d(TAG, "FCM Token received: $token")
+            // TODO: Send token to your backend if needed
+        }
+
+        // Subscribe to topics
+        NotificationHelper.subscribeToTopics()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == NotificationHelper.PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() &&
+                grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                Log.d(TAG, "Notification permission granted by user")
+                initializeNotifications()
+            } else {
+                Log.d(TAG, "Notification permission denied by user")
+            }
+        }
     }
 
     private fun loadUserName() {
