@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".LanguageApplication"
@@ -16,6 +17,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AURAAPPMarkUp"
         tools:targetApi="31">
+
+        <!--
+            FIREBASE MESSAGING SERVICE - Push notifications
+            Operation: Handles incoming push notifications from Firebase Cloud Messaging
+            Exported: false (internal service)
+        -->
+        <service
+            android:name=".AuraFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Firebase Cloud Messaging default notification settings -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notifications" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/aura_primary" />
+
         <!--
             LANGUAGE SETTINGS - App language selection
             Operation: Allow users to change app language (English, Afrikaans, Zulu, Xhosa)
